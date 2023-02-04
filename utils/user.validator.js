@@ -15,6 +15,7 @@ const schema = joi.object({
     }),
     password: joi.string().min(3).max(20),
     gender:joi.string().valid("male","female"),
+    role:joi.string().valid("USER","ADMIN")
 })
 
 // const validator = asyncHandler(async(req,res,next)=>{

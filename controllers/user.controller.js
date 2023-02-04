@@ -2,6 +2,8 @@ const User = require("../models/user");
 const ApiError = require("../utils/apiError");
 const asyncHandler = require("express-async-handler");
 const validator = require("../utils/user.validator");
+const bcrypt = require("bcryptjs");
+const JWT = require("jsonwebtoken");
 
 class UserController{
     signUP = asyncHandler(async(req,res,next)=>{
@@ -65,10 +67,21 @@ class UserController{
 
     login = asyncHandler(async(req,res,next)=>{
         const{email,password} = req.body;
-        const user = await Todo.findOne(email);
+        const user = await User.findOne({email});
         if(!user){
-            return next(new ApiError(`User Not Found!`, 401));
+            return next(new ApiError(`Invalid Email or Password`, 401));
         }
+        const isMatch = await bcrypt.compare(password,user.password);
+        if(!isMatch)return next(new ApiError(`Invalid Email or Password`,401));
+        const token = JWT.sign({userID:user.id},process.env.JWT_SECRT_KEY,{
+            expiresIn:process.env.JWT_EXPIRE_TIME
+        })
+        res.status(200).json({
+            status:"Sucess",
+            user:user,
+            token
+        })
+
     })
 }
 module.exports = new UserController();
