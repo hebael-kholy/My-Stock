@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -12,6 +14,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ErrorComponent } from './Components/error/error.component';
 import { AboutComponent } from './Components/about/about.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,15 @@ import { AboutComponent } from './Components/about/about.component';
     ErrorComponent,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
