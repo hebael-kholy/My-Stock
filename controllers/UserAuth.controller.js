@@ -12,7 +12,7 @@ const auth =asyncHandler(async(req,res,next)=>{
     if(!token){
         return next(new ApiError(`you are not login, pls login to get access this route`,401));
     }
-
+    //2- verify token ==> that no change happen && expired token
     //2- verify token ==> that no change happen && expired token 
     const decoded = JWT.verify(token, process.env.JWT_SECRT_KEY)  
    
