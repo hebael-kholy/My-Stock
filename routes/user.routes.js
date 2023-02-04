@@ -11,7 +11,7 @@ const userRouter = express.Router();
 userRouter.route('/signup').post(validator,userController.signUP);
 userRouter.route('/login').post(userController.login);
 
-userRouter.route('/').get(userAuth,isAdmin,userController.findAll);
+userRouter.route('/').get(userController.findAll);
 userRouter.route('/:id').get(userController.findone);
 
 userRouter.route('/delete/:id').delete(userAuth,userController.deleteOne);

@@ -4,6 +4,8 @@ const asyncHandler = require("express-async-handler");
 const validator = require("../utils/user.validator");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
+const multerConfig = require('../utils/multerConfig');
+const cloud = require('../utils/CloudinaryConfig');
 
 class UserController{
     signUP = asyncHandler(async(req,res,next)=>{
@@ -82,6 +84,9 @@ class UserController{
             token
         })
 
+    })
+    uploadImage=asyncHandler(async,(req,res,next)=>{
+        console.log()
     })
 }
 module.exports = new UserController();
