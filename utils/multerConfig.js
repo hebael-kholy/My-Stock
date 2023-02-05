@@ -5,7 +5,7 @@ const ApiError = require ('./apiError')
 const fileStorage =multer.diskStorage({
     destination:'images',
     filename:(req,file,cb)=>{
-        cb(null,file,originalname)
+        cb(null,file.originalname)
     }
 })
 
@@ -14,17 +14,17 @@ const fileStorage =multer.diskStorage({
 const fileFilter = (req,file,cb)=>{
 
     if(
-        file.mimetype === 'images/png' ||
-        file.mimetype === 'images/jpg' ||
-        file.mimetype === 'images/jpeg'||
-        file.mimetype === 'images/jfif'||
-        file.mimetype === 'images/webP'
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg'||
+        file.mimetype === 'image/jfif'||
+        file.mimetype === 'image/webP'
     )
     {
         cb(null,true)
     }
     else {
-        cb(new ApiError(`invalid image type`,400),false)
+        cb(new ApiError(`invalid image type`,400),false);
     }
 }
 

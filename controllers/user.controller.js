@@ -4,8 +4,9 @@ const asyncHandler = require("express-async-handler");
 const validator = require("../utils/user.validator");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
-const multerConfig = require('../utils/multerConfig');
+
 const cloud = require('../utils/CloudinaryConfig');
+const fs = require("fs");
 
 class UserController{
     signUP = asyncHandler(async(req,res,next)=>{
@@ -85,8 +86,19 @@ class UserController{
         })
 
     })
-    uploadImage=asyncHandler(async,(req,res,next)=>{
-        console.log()
+    uploadImage=asyncHandler(async(req,res,next)=>{
+        const {id} = req.params;
+      
+        const result = await cloud.uploads(req.files[0].path);
+        console.log(result);
+        const user = await User.findOneAndUpdate({id},{image:result.url});
+
+        fs.unlinkSync(req.files[0].path);
+        res.status(200).json({
+            status:"Sucess",
+            user:user
+        })
     })
 }
+
 module.exports = new UserController();

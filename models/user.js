@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
 
+const URL = "http://res.cloudinary.com/dwmkkev1m/image/upload/v1675619457/gj2zshyuqvc0db2fyrst.jpg";
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name:{
@@ -23,7 +24,8 @@ const UserSchema = new Schema({
         required:[true, 'Gender is required']
     },
     image:{
-        type:String
+        type:String,
+        default:URL
     },
     role:{
         type:String,

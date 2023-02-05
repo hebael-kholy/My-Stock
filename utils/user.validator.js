@@ -15,19 +15,10 @@ const schema = joi.object({
     }),
     password: joi.string().min(3).max(20),
     gender:joi.string().valid("male","female"),
-    role:joi.string().valid("USER","ADMIN")
+    role:joi.string().valid("USER","ADMIN"),
+    image:joi.string().default("http://res.cloudinary.com/dwmkkev1m/image/upload/v1675619457/gj2zshyuqvc0db2fyrst.jpg")
 })
 
-// const validator = asyncHandler(async(req,res,next)=>{
-
-//     const validate = await schema.validateAsync(req.body);
-//     console.log(validate)
-//     if(!validate){
-//         return next(new ApiError(`invalid validation`, 400));
-//     }
-//     next();
-     
-// });
 
 const validator = async(req,res,next)=>{
     try {
