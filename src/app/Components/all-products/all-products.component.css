@@ -1,0 +1,54 @@
+.text-primary {
+  color: #c057f7 !important;
+}
+.bg-primary {
+  background-color: #c057f7 !important;
+}
+.btn-primary {
+  background-color: #c057f7 !important;
+}
+
+/*Title of New Collection*/
+.title h2::before {
+  position: absolute;
+  content: "";
+  width: 7px;
+  height: 50px;
+  background-color: #c057f7;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*Collection Tabs & Content in Collection Section*/
+
+.collection-tabs li .active {
+  background-color: #c057f7;
+  color: white;
+}
+.collection-tabs li .btn {
+  border-radius: 25px;
+  border-color: #c057f7;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.collection-tabs li .btn:hover {
+  background-color: #c057f7;
+  color: white;
+}
+.collection-img img {
+  transition: all 0.3s ease;
+}
+.collection-img img:hover {
+  transform: scale(1.2);
+}
+.btn-addcart .btn {
+  border-color: #c057f7;
+  color: #c057f7;
+  padding: 10px 28px;
+  border-radius: 25px;
+}
+.btn-addcart .btn:hover {
+  background-color: #c057f7;
+  color: white;
+}

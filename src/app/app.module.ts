@@ -16,6 +16,9 @@ import { ErrorComponent } from './Components/error/error.component';
 import { AboutComponent } from './Components/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { HttpClientModule } from '@angular/common/http';
+import { AllProductsComponent } from './Components/all-products/all-products.component';
+import { SalesProductsComponent } from './Components/sales-products/sales-products.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     RegisterComponent,
     ErrorComponent,
     AboutComponent,
+    AllProductsComponent,
+    SalesProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FontAwesomeModule,
     CarouselModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

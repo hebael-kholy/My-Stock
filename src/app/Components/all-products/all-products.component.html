@@ -1,0 +1,55 @@
+<!-- Collection -->
+
+<section id="collection" class="py-5">
+  <div class="container">
+    <div class="title text-center">
+      <h2 class="position-relative d-inline-block text-capitalize">new collection</h2>
+    </div>
+    <ul class=" nav nav-tabs d-flex justify-content-center border-0 collection-tabs">
+      <li class=" nav-item">
+        <a class="btn m-3 active" data-bs-toggle="tab" href="#all">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" data-bs-toggle="tab" href="#bestSellers">Best Sellers</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" data-bs-toggle="tab" href="#featured">Featured</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" data-bs-toggle="tab" href="#newArrival">New Arrival</a>
+      </li>
+    </ul>
+    <div class="text-center">
+      <img *ngIf="isLoading" src="assets/Spinner-1s-200px.svg" alt="">
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active mt-4 gx-0 gy-3 p-2" id="all">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngFor="let product of products">
+            <div class="collection-img position-relative overflow-hidden">
+              <img src="{{product.image}}" alt="" width="200" height="300" class="w-100">
+            </div>
+            <div class="text-center">
+              <div class="rating mt-3">
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                {{product.rating.rate}}
+              </div>
+              <p class="text-capitalize my-1">{{product.category}}</p>
+              <span class="fw-bold">$ {{product.price}}</span>
+              <div class="btn-addcart">
+                <a routerLink="/" class="btn text-uppercase mt-3"><fa-icon [icon]="iconCart"></fa-icon> add to cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #loadingBlock>
+      <h1>Loading...</h1>
+    </ng-template>
+  </div>
+</section>
