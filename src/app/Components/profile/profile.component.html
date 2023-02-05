@@ -1,1 +1,28 @@
-<p>profile works!</p>
+<div class="nav-settings">
+    <div class="sideNavbar">
+        <div class="userImg">
+            <img src="./assets/yasmeen.jpg" alt="user">
+        </div>
+        <ul>
+            <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded" routerLink="/profile">Settings</a></li>
+            <li routerLinkActive="active"><span><i class="bi bi-cart-check-fill"></i></span><a class="nav-link rounded" routerLink="/profile/orders" >My Orders</a></li>
+        </ul>
+    </div> 
+    <div class="information">
+        <h2>Your account settings</h2>
+        <form action="">
+           <div class="inputLabels">
+             <div class="inputLabel">
+               <label for="">Name</label>
+               <label for="">Email address</label>
+            </div>
+            <div class="inputboxes">
+                <input type="text">
+                <input type="email">
+             </div>
+           </div>
+             <a  class="changePic" href="">Change Picture</a>
+             <input type="button" value="Save settings">
+        </form>
+    </div> 
+</div>

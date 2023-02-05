@@ -1,0 +1,130 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.profile{
+    display: flex;
+}
+.sideNavbar{
+    width: 22%;
+    height: 100vh;
+}
+.userImg img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.userImg{
+    width: fit-content;
+    margin: 0 auto;
+}
+.sideNavbar{
+    background-color: #c057f7;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+li{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 25px 0;
+    display: flex;
+    gap: 15px;
+    padding-left: 40px;
+}
+li:hover{
+    cursor: pointer;
+}
+
+.active{
+    border-left: 5px solid white;
+}
+.nav-settings{
+    display: flex;
+}
+
+/* end nav */
+/* cardsOrders */
+.card-img-top{
+    width: 170px;
+    height: 200px;
+}
+.cardOrders{
+    padding: 30px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+.card{
+    box-shadow: 0px 0px 4px #c4c4c4;
+}
+h5{
+    font-size: 18px;
+    font-weight: 600;
+}
+.btnDel{
+    display: flex;
+    justify-content: flex-end;
+}
+.btnDel input{
+    background-color: white;
+  color: rgb(175, 16, 16);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.btnDel input:hover{
+    background-color: rgb(175, 16, 16);
+    color: white;
+    cursor: pointer;
+}
+.card-body{
+    padding: 10px;
+}
+
+/* responsive design */
+
+@media (max-width: 910px){
+      li{
+        font-size: 18px;
+        padding-left: 20px;
+      }
+      img{
+        width: 105px;
+        height: 105px;
+      }
+      .sideNavbar{
+        width: 42%;
+      }
+      .cardOrders{
+        gap: 20px;
+      }
+      .card{height: fit-content;}
+}
+
+@media (max-width: 580px){
+    .sideNavbar{
+        height: fit-content;
+        width: 100%;
+    }
+    .nav-settings{
+        flex-direction: column;
+    }
+      li{
+        font-size: 19px;
+        padding-left: 35px;
+      }
+      .cardOrders{
+        gap: 5px;
+        justify-content: center;
+    }
+    .card{
+        margin-bottom: 5px;
+    }
+    .card-img-top{
+        width: 190px;
+        height: 200px;
+    }
+}

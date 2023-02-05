@@ -1,0 +1,160 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.profile{
+    display: flex;
+}
+.sideNavbar{
+    width: 22%;
+    height: 100vh;
+}
+.userImg img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.userImg{
+    width: fit-content;
+    margin: 0 auto;
+}
+.sideNavbar{
+    background-color: #c057f7;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+li{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 25px 0;
+    display: flex;
+    gap: 15px;
+    padding-left: 40px;
+}
+li:hover{
+    cursor: pointer;
+}
+
+.active{
+    border-left: 5px solid white;
+}
+.nav-settings{
+    display: flex;
+}
+
+/* end nav */
+/* profile info */
+
+.information{
+    padding: 50px 100px;
+    width: 78%;
+}
+h2{
+    color:#c057f7;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+}
+.inputLabel label{
+    display: block;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+.inputLabel {
+    width: 15%;
+}
+.inputboxes input{
+    display: block;
+    margin-bottom: 25px;
+    width: 100%;
+}
+.inputboxes input:focus{
+    border-color: #c057f7;
+    outline: none;
+}
+.inputboxes{
+    width: 85%;
+}
+.inputLabels{
+    display: flex;
+    gap: 40px;
+}
+.changePic{
+    color: black;
+    display: block;
+}
+input[type= "button"]{
+    background-color: #c057f7;
+    padding: 10px;
+    font-weight: 700;
+    color: white;
+    display: block;
+    border-radius: 20px;
+    border: none;
+    position: absolute;
+right: 100px;
+margin-top: 20px;
+letter-spacing: 1px;
+}
+
+input[type= "button"]:hover{
+    background-color: #c482e7;
+}
+
+/* responsive design */
+
+@media (max-width: 910px){
+    .information{
+        padding: 50px 50px;
+    }
+    .inputLabels{
+        gap: 20px;
+      }
+      .inputLabel {
+        width: 25%;
+      }
+      .inputboxes{
+        width: 75%;
+      }
+      li{
+        font-size: 18px;
+        padding-left: 20px;
+      }
+      img{
+        width: 105px;
+        height: 105px;
+      }
+      input[type="button"]{
+        right: 60px;
+      }
+}
+
+@media (max-width: 580px){
+    .sideNavbar{
+        height: fit-content;
+        width: 100%;
+    }
+    .nav-settings{
+        flex-direction: column;
+    }
+    .information{
+        padding: 50px 20px;
+        width: 100%;
+      }
+      .inputLabels{
+        gap: 10px;
+      }
+      input[type="button"]{
+        right: 25px;
+      }
+      h2{
+        font-size: 21px;
+      }
+      li{
+        font-size: 19px;
+        padding-left: 35px;
+      }
+}

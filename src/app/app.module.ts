@@ -12,6 +12,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ErrorComponent } from './Components/error/error.component';
 import { AboutComponent } from './Components/about/about.component';
+import { SideOrderComponent } from './side-order/side-order.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AboutComponent } from './Components/about/about.component';
     RegisterComponent,
     ErrorComponent,
     AboutComponent,
+    SideOrderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
