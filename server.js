@@ -4,14 +4,26 @@ const mongoose = require("mongoose");
 const userRouter = require("./routes/user.routes");
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
-
-
+const cors = require("cors")
 
 const app = express();
 
 const PORT  = process.env.PORT || 3000;
 const dbURL  = process.env.dbURL;
 
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+  ],
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('images'))
 app.use('/users',userRouter);
@@ -19,8 +31,6 @@ app.use('/users',userRouter);
 app.all('*',(req, res, next)=>{
     next(new ApiError(`can't find this route ${req.originalUrl}`, 400))
 })
-
-
 
 
 app.use(globalError);
