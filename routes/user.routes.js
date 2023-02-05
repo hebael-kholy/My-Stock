@@ -1,4 +1,3 @@
-const UserController = require("../controllers/user.controller");
 const express = require("express");
 const userController = require("../controllers/user.controller");
 const validator = require("../utils/user.validator");
