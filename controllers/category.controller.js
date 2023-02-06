@@ -2,17 +2,22 @@ const ApiError = require("../utils/apiError");
 const asyncHandler = require("express-async-handler");
 const Category =  require("../models/gategory");
 const slugify = require("slugify");
+const cloud = require('../utils/CloudinaryConfig');
+const fs = require("fs");
 
 class categoryController{
 
     createCategory = asyncHandler(async(req,res,next)=>{
         const {name} = req.body;
+        const result = await cloud.uploads(req.files[0].path);
         const newCategory = new Category({
             name,
-            slug:slugify(name)
+            slug:slugify(name),
+            image:result.url
         })
         const added = await newCategory.save();
         if(!added) return next(new ApiError(`Faild to create category`,400))
+        fs.unlinkSync(req.files[0].path);
         res.status(200).json({
             status: "success",
             data:newCategory

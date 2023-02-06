@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
 
 const URL = "http://res.cloudinary.com/dwmkkev1m/image/upload/v1675619457/gj2zshyuqvc0db2fyrst.jpg";
-const Schema = mongoose.Schema;
-const UserSchema = new Schema({
+
+const UserSchema = new mongoose.Schema({
     name:{
         type: String,
         minLength: [3, 'Name must contain at least 3 characters'],
@@ -47,7 +47,7 @@ const UserSchema = new Schema({
         default: {}
       },
 
-})
+},{strictQuery:true})
 
 
 UserSchema.pre("save",async function(next){

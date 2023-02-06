@@ -1,6 +1,6 @@
+const JWT = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user");
-const JWT = require("jsonwebtoken");
 const ApiError = require("../utils/apiError");
 
 const isAdmin = asyncHandler(async(req, res,next)=>{

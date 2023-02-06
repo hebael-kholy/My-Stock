@@ -1,17 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
+const cors = require("cors")
 const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/gategory.routes");
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
-const cors = require("cors")
 
 const app = express();
 
 const PORT  = process.env.PORT || 3000;
-const dbURL  = process.env.dbURL;
-
+const dbURL = process.env.dbURL;
 const corsOptions = {
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -40,8 +39,7 @@ app.use(globalError);
 
 mongoose.connect(dbURL, () => {
     app.listen(PORT, () => {
-      console.log('server listening on http://localhost:' + PORT);
-      console.log("connected DB");
+      console.log(`server listening on http://localhost:${PORT}`);
     });
 });
 

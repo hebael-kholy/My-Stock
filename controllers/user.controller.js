@@ -90,7 +90,6 @@ class UserController{
         const {id} = req.params;
       
         const result = await cloud.uploads(req.files[0].path);
-        console.log(result);
         const user = await User.findOneAndUpdate({id},{image:result.url},{new:true});
 
         fs.unlinkSync(req.files[0].path);
