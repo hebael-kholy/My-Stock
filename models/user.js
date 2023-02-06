@@ -47,8 +47,8 @@ const UserSchema = new mongoose.Schema({
         default: {}
       },
 
-},{strictQuery:false})
-
+})
+mongoose.set('strictQuery', true);
 
 UserSchema.pre("save",async function(next){
     if(!this.isModified('password')) return next();
