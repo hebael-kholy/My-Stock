@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema({
         default: {}
       },
 
-},{strictQuery:true})
+},{strictQuery:false})
 
 
 UserSchema.pre("save",async function(next){
