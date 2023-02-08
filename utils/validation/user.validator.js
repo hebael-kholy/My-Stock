@@ -1,5 +1,5 @@
 const joi = require('joi');
-const ApiError = require("../utils/apiError");
+const ApiError = require("../apiError");
 const asyncHandler = require("express-async-handler");
 
 const schema = joi.object({

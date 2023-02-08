@@ -9,21 +9,35 @@ class categoryController{
 
     createCategory = asyncHandler(async(req,res,next)=>{
         const {name} = req.body;
-        const result = await cloud.uploads(req.files[0].path);
         const newCategory = new Category({
+            // _id:slugify(name),
             name,
-            slug:slugify(name),
-            image:result.url
+            slug:slugify(name)
         })
         const added = await newCategory.save();
         if(!added) return next(new ApiError(`Faild to create category`,400))
-        fs.unlinkSync(req.files[0].path);
         res.status(200).json({
             status: "success",
             data:newCategory
         });
     })
+    uploadImage = asyncHandler(async(req,res,next)=>{
+        const {slug} = req.params;
+        
+        const result = await cloud.uploads(req.files[0].path);
+        if(!result) return next(new ApiError(`Faild to upload image`,400));
 
+        const category = await Category.findOneAndUpdate({slug},{image:result.url},{new:true});
+        if(!category) return next(new ApiError(`Invalid category name ${slug}`, 404));
+        
+        fs.unlinkSync(req.files[0].path);
+        
+        res.status(200).json({
+            status: "success",
+            data:category
+        });
+
+    });
     findAll = asyncHandler(async(req,res,next)=>{
         const page = req.query.page * 1 || 1; // * 1 to convert page to number 
         const limit = req.query.limit * 1 || 5;

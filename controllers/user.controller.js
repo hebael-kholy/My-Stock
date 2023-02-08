@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const ApiError = require("../utils/apiError");
 const asyncHandler = require("express-async-handler");
-const validator = require("../utils/user.validator");
+const validator = require("../utils/validation/user.validator");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 
@@ -59,13 +59,15 @@ class UserController{
     updateOne = asyncHandler(async(req,res,next)=>{
         const{id} = req.params;
         const{name,email,password,gender} = req.body;
-        const user = await User.findByIdAndUpdate(id,{name,email,password,gender});
+        
+        const user = await User.findByIdAndUpdate(id,{name,email,password,gender},{new:true});
         if (!user){ return next(new ApiError(`Invalid id ${id} `, 404));}
-        const updeatedUser = await User.findById(id);
+        
         res.status(200).json({
             status: "success",
-            data: updeatedUser
+            data: user
         });
+        
     })
 
     login = asyncHandler(async(req,res,next)=>{

@@ -1,8 +1,8 @@
 const express = require("express");
 const userController = require("../controllers/user.controller");
-const validator = require("../utils/user.validator");
-const userAuth = require("../controllers/UserAuth.controller");
-const isAdmin = require ("../controllers/adminAuth.controller")
+const validator = require("../utils/validation/user.validator");
+const userAuth = require("../middlewares/UserAuth.middle");
+const isAdmin = require ("../middlewares/adminAuth.middle")
 const multerConfig = require('../utils/multerConfig');
 
 const userRouter = express.Router();

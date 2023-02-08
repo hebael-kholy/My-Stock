@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 
+const URL = "http://res.cloudinary.com/dwmkkev1m/image/upload/v1675784988/flrvrm8bx5dwjbzeimzm.jpg"
+
 const categorySchema = new mongoose.Schema(
     {
+        // _id:{
+        //     type:String,
+        //     alias: 'relationId'
+        // },
         name:{
             type:String,
             require:[true, "Category is required"],
@@ -15,7 +21,8 @@ const categorySchema = new mongoose.Schema(
             unique:true
         },
         image:{
-            type:String
+            type:String,
+            default:URL
         }
     },
     {

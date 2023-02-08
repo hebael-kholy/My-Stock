@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors")
 const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/gategory.routes");
+const productRouter = require("./routes/prodcut.routes");
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
 
@@ -29,6 +30,8 @@ app.use(express.static('images'))
 
 app.use('/users',userRouter);
 app.use('/category',categoryRouter);
+app.use('/product',productRouter);
+
 
 app.all('*',(req, res, next)=>{
     next(new ApiError(`can't find this route ${req.originalUrl}`, 400))
@@ -39,9 +42,7 @@ app.use(globalError);
 
 mongoose.connect(dbURL, () => {
     app.listen(PORT, () => {
-      console.log(`server listening on https://localhost:${PORT}`);
+      console.log(`server listening on http://localhost:${PORT}`);
     });
 });
-
-/// now connect to render sucessfulllllllly
 

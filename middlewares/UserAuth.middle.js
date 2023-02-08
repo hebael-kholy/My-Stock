@@ -16,7 +16,7 @@ const auth =asyncHandler(async(req,res,next)=>{
     //2- verify token ==> that no change happen && expired token 
     const decoded = JWT.verify(token, process.env.JWT_SECRT_KEY)  
    
-    //3- check if todo exist
+    //3- check if user exist or not 
     const currentUser = await User.findById(decoded.userID);
     req.user = currentUser;
     
