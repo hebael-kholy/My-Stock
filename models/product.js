@@ -47,7 +47,8 @@ const productSchema = new mongoose.Schema(
         brand:{
             type:String,
             required:true
-        }
+        },
+        colors:[String]
     },
     {
         timestamps:true

@@ -32,23 +32,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ["USER", "ADMIN"],
     default: "USER",
-  },
-  cart: {
-    // items: [{
-    //   productId: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Product',
-    //     required: true
-    //   },
-    //   quantity: {
-    //     type: Number,
-    //     required: true
-    //   }
-    // }],
-    default: {},
-  },
+  }
 });
-mongoose.set("strictQuery",true);
+
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

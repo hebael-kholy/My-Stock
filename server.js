@@ -5,6 +5,7 @@ const cors = require("cors")
 const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/gategory.routes");
 const productRouter = require("./routes/prodcut.routes");
+const CartRouter = require("./routes/cart.routes");
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
 
@@ -31,6 +32,7 @@ app.use(express.static('images'))
 app.use('/users',userRouter);
 app.use('/category',categoryRouter);
 app.use('/product',productRouter);
+app.use('/cart',CartRouter);
 
 
 app.all('*',(req, res, next)=>{
