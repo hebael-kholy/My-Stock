@@ -4,6 +4,7 @@ const Cart = require('../models/cart');
 const Product = require('../models/product');
 
 class cartController{
+
     createCart = asyncHandler(async (req, res, next) => {
         const {productId, color} = req.body;
         const product = await Product.findById(productId);
@@ -40,6 +41,7 @@ class cartController{
             data: cart
         })
     })
+    
 
 }
 

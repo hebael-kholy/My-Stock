@@ -22,4 +22,6 @@ userRouter.route("/images/:id").patch(multerConfig, userController.uploadImage);
 
 userRouter.route("/admin/login").post(userController.Adminlogin);
 
+// userRouter.route("/getme").get(userController.getloggedUserData,userController.findone);
+
 module.exports = userRouter;
