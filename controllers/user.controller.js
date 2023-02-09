@@ -88,6 +88,28 @@ class UserController{
         })
 
     })
+    Adminlogin = asyncHandler(async(req,res,next)=>{
+        const{email,password} = req.body;
+        const user = await User.findOne({email});
+        if(!user){
+            return next(new ApiError(`Invalid Email or Password`, 401));
+        }
+        const isMatch = await bcrypt.compare(password,user.password);
+        if(!isMatch)return next(new ApiError(`Invalid Email or Password`,401));
+        const token = JWT.sign({userID:user.id},process.env.JWT_SECRT_KEY,{
+            expiresIn:process.env.JWT_EXPIRE_TIME
+        })
+        if(!user.role==="ADMIN"){
+            return next(new ApiError(`Anauthorized !!!`, 401));
+        }
+
+        res.status(200).json({
+            status:"Sucess",
+            user:user,
+            token
+        })
+
+    })
     uploadImage = asyncHandler(async(req,res,next)=>{
         const {id} = req.params;
       
