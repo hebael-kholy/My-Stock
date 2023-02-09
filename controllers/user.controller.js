@@ -102,8 +102,7 @@ class UserController{
         if(!user.role==="ADMIN"){
             return next(new ApiError(`Anauthorized !!!`, 401));
         }
-     
-        console.log(loginToken)
+    
         res.status(200).json({
             status:"Sucess",
             user:user,
