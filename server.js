@@ -6,6 +6,7 @@ const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/gategory.routes");
 const productRouter = require("./routes/prodcut.routes");
 const CartRouter = require("./routes/cart.routes");
+const reviewRouter = require("./routes/review.routes")
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
 
@@ -33,7 +34,7 @@ app.use('/users',userRouter);
 app.use('/category',categoryRouter);
 app.use('/product',productRouter);
 app.use('/cart',CartRouter);
-
+app.use('/review',reviewRouter);
 
 app.all('*',(req, res, next)=>{
     next(new ApiError(`can't find this route ${req.originalUrl}`, 400))
