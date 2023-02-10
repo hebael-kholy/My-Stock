@@ -4,6 +4,7 @@ const validator = require("../utils/validation/user.validator");
 const userAuth = require("../middlewares/UserAuth.middle");
 const isAdmin = require("../middlewares/adminAuth.middle");
 const multerConfig = require("../utils/multerConfig");
+const cartRoute = require("./cart.routes")
 
 const userRouter = express.Router();
 
@@ -21,6 +22,8 @@ userRouter
 userRouter.route("/images/:id").patch(multerConfig, userController.uploadImage);
 
 userRouter.route("/admin/login").post(userController.Adminlogin);
+
+userRouter.use("/:userid/cart",cartRoute)
 
 // userRouter.route("/getme").get(userController.getloggedUserData,userController.findone);
 

@@ -4,7 +4,7 @@ const carytSchema = new mongoose.Schema(
     {
         cartItems:[{
                 product:{
-                    type:mongoose.Schema.Types.ObjectId,
+                    type:mongoose.Schema.ObjectId,
                     ref:'Product'
                 },
                 quantitiy:{
@@ -17,7 +17,7 @@ const carytSchema = new mongoose.Schema(
         ],
         totalCarPrice:Number,
         user:{
-            type:mongoose.Schema.Types.ObjectId,
+            type:mongoose.Schema.ObjectId,
             ref:'User'
         }
     },

@@ -7,7 +7,7 @@ const JWT = require("jsonwebtoken");
 
 const cloud = require('../utils/CloudinaryConfig');
 const fs = require("fs");
-let loggedToken;
+
 class UserController{
     signUP = asyncHandler(async(req,res,next)=>{
         const {name, email, password,gender,role} = req.body;

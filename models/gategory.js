@@ -4,10 +4,6 @@ const URL = "http://res.cloudinary.com/dwmkkev1m/image/upload/v1675784988/flrvrm
 
 const categorySchema = new mongoose.Schema(
     {
-        // _id:{
-        //     type:String,
-        //     alias: 'relationId'
-        // },
         name:{
             type:String,
             require:[true, "Category is required"],
