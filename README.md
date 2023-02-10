@@ -1,1 +1,1 @@
-# Project
+# EcommerceITI project (backend)
