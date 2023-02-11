@@ -16,14 +16,13 @@ userRouter.route("/:id").get(userController.findone);
 
 userRouter.route("/delete/:id").delete(userAuth, userController.deleteOne);
 
-userRouter
-  .route("/update/:id")
-  .patch(validator, userController.updateOne);
+userRouter.route("/update/:id")
+.patch(userAuth,validator, userController.updateOne)
+.put(userAuth,validator, userController.updateOne);
 
-  userRouter
-  .route("/update/:id")
-  .put(userAuth,validator, userController.updateOne);
-userRouter.route("/images/:id").patch(multerConfig, userController.uploadImage);
+userRouter.route("/images/:id")
+.patch(multerConfig, userController.uploadImage)
+.put(multerConfig, userController.uploadImage);
 
 userRouter.route("/admin/login").post(userController.Adminlogin);
 
