@@ -124,10 +124,10 @@ class UserController{
         })
     })
 
-    getloggedUserData = asyncHandler(async(req,res,next)=>{
-        req.params.id = req.user._id;
-        next();
-    })
+    // getloggedUserData = asyncHandler(async(req,res,next)=>{
+    //     req.params.id = req.user._id;
+    //     next();
+    // })
 }
 
 module.exports = new UserController();
