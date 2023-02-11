@@ -81,6 +81,7 @@ class UserController{
         const token = JWT.sign({userID:user.id},process.env.JWT_SECRT_KEY,{
             expiresIn:process.env.JWT_EXPIRE_TIME
         })
+        res.setHeader(token);
         res.status(200).json({
             status:"Sucess",
             user:user,

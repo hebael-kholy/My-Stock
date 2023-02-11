@@ -18,7 +18,11 @@ userRouter.route("/delete/:id").delete(userAuth, userController.deleteOne);
 
 userRouter
   .route("/update/:id")
-  .patch(userAuth, validator, userController.updateOne);
+  .patch(validator, userController.updateOne);
+
+  userRouter
+  .route("/update/:id")
+  .put(userAuth,validator, userController.updateOne);
 userRouter.route("/images/:id").patch(multerConfig, userController.uploadImage);
 
 userRouter.route("/admin/login").post(userController.Adminlogin);
