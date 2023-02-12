@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const URL =
-  "http://res.cloudinary.com/dwmkkev1m/image/upload/v1675619457/gj2zshyuqvc0db2fyrst.jpg";
-
+const URL ="http://res.cloudinary.com/dwmkkev1m/image/upload/v1676223219/bkoft9fq3jalnrbstckp.jpg"
+  
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,

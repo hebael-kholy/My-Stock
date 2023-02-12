@@ -14,7 +14,7 @@ userRouter.route("/login").post(userController.login);
 userRouter.route("/").get(userController.findAll);
 userRouter.route("/:id").get(userController.findone);
 
-userRouter.route("/delete/:id").delete(userAuth, userController.deleteOne);
+userRouter.route("/delete/:id").delete(userController.deleteOne);
 
 userRouter.route("/update/:id")
 .patch(userAuth,validator, userController.updateOne)
