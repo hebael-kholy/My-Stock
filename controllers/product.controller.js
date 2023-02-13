@@ -89,7 +89,7 @@ class productController {
 
     findone = asyncHandler(async (req, res,next) => {
         const { id } = req.params;
-        const product = await Product.findById(id);
+        const product = await Product.findById(id).populate({path:"category",select:"name"});
         if (!product) {
             return next(new ApiError(`Invalid id ${id}`, 404));
         }
