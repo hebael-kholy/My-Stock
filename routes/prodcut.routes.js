@@ -12,10 +12,12 @@ const productRouter = express.Router({ mergeParams: true });
 productRouter.route("/").post(createProduct, productController.createProduct)
 .get(productController.findAll);
 
-productRouter.route("/:id").get(productController.findone)
+productRouter.route("/:id")
 .patch(productController.updateOne)
 .put(productController.updateOne)
 .delete(productController.deleteOne);
+
+productRouter.route("/get/:id").get(productController.findone)
 
 productRouter.route("/products/sale").get(productController.saleProducts);
 

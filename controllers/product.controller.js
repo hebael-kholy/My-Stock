@@ -74,12 +74,24 @@ class productController {
             data:product
         });
     })
-    findone = asyncHandler(async (req, res,next) => {
+    /*findone = asyncHandler(async (req, res,next) => {
         const {id} = req.params;
-        const product = await Product.findById({id}).populate({path:"category",select:"name"});
+        const product = await Product.findById(id).populate({path:"category",select:"name"});
 
         if (!product) {
             return next(new ApiError(`Invalid product id ${id}`, 404));
+        }
+        res.status(200).json({
+            status: "success",
+            data: product
+        });
+    })*/
+
+    findone = asyncHandler(async (req, res,next) => {
+        const { id } = req.params;
+        const product = await Product.findById(id);
+        if (!product) {
+            return next(new ApiError(`Invalid id ${id}`, 404));
         }
         res.status(200).json({
             status: "success",
