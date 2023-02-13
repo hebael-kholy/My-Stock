@@ -10,7 +10,6 @@ class categoryController{
     createCategory = asyncHandler(async(req,res,next)=>{
         const {name} = req.body;
         const newCategory = new Category({
-            // _id:slugify(name),
             name,
             slug:slugify(name)
         })

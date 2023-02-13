@@ -9,24 +9,19 @@ const reviewRoute = require("./review.routes");
 
 const productRouter = express.Router({ mergeParams: true });
 
-productRouter
-  .route("/")
-  .post(createProduct, productController.createProduct)
-  .get(productController.findAll);
+productRouter.route("/").post(createProduct, productController.createProduct)
+.get(productController.findAll);
 
-productRouter
-  .route("/:id")
-  .get(productController.findone)
-  .patch(productController.updateOne)
-  .put(productController.updateOne)
-  .delete(productController.deleteOne);
+productRouter.route("/:id").get(productController.findone)
+.patch(productController.updateOne)
+.put(productController.updateOne)
+.delete(productController.deleteOne);
 
 productRouter.route("/products/sale").get(productController.saleProducts);
 
-productRouter
-  .route("/image/:id")
-  .patch(multer, productController.uploadImage)
-  .put(multer, productController.uploadImage);
+productRouter.route("/image/:id")
+.patch(multer, productController.uploadImage)
+.put(multer, productController.uploadImage);
 
 productRouter.use("/review/:id", reviewRoute);
 module.exports = productRouter;
