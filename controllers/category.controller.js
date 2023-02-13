@@ -26,7 +26,7 @@ class categoryController{
         const result = await cloud.uploads(req.files[0].path);
         if(!result) return next(new ApiError(`Faild to upload image`,400));
 
-        const category = await Category.findOneAndUpdate({slug},{image:result.url},{new:true});
+        const category = await Category.findByIdAndUpdate(slug,{image:result.url},{new:true});
         if(!category) return next(new ApiError(`Invalid category name ${slug}`, 404));
         
         fs.unlinkSync(req.files[0].path);
