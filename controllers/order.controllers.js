@@ -49,8 +49,11 @@ class orderController {
   });
 
   getUserOrder = asyncHandler(async (req, res, next) => {
-    const { id } = req.params;
-    const orders = await Order.find({ user: id });
+  
+    let filter = {};
+    if (req.query.status) filter.status = req.query.status;
+    if(req.params.id) filter.user = req.params.id;
+    const orders = await Order.find(filter);
     res.status(200).json({
       status: "success",
       data: orders,
