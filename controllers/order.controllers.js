@@ -31,11 +31,11 @@ class orderController {
     if (order) {
       const bulkoption = cart.cartItems.map((item) => ({
         updateOne: {
-          filter: {_id: item.product}, // find product whose id  = item .product
-          update: { $inc: { quantity: -item.quantitiy} },
-        }
-      }));  
-    
+          filter: { _id: item.product }, // find product whose id  = item .product
+          update: { $inc: { quantity: -item.quantitiy } },
+        },
+      }));
+
       await Product.bulkWrite(bulkoption, {});
 
       //5- clear cart depend on cart id
@@ -48,46 +48,91 @@ class orderController {
     });
   });
 
-  getUserOrder = asyncHandler(async(req,res,next)=>{
-    const {id} = req.params;
-    const orders = await Order.find({user:id});
+  getUserOrder = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const orders = await Order.find({ user: id });
     res.status(200).json({
       status: "success",
       data: orders,
     });
+  });
 
-  })
-
-  getAllOrder = asyncHandler(async(req,res,next)=>{
-    const {id} = req.params;
+  getAllOrder = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
     const user = await User.findById(id);
-    if (!user ){
-      return next(new ApiError(`User not found`,404));
+    if (!user) {
+      return next(new ApiError(`User not found`, 404));
     }
-    if(user.role!== "ADMIN"){
-      return next(new ApiError(`User not authorized`,401));
+    if (user.role !== "ADMIN") {
+      return next(new ApiError(`User not authorized`, 401));
     }
-    const orders = await Order.find({});
+    let filter = {};
+    if (req.query.status) filter.status = req.query.status;
+
+    const orders = await Order.find(filter);
+
     res.status(200).json({
       status: "success",
       orderCount: orders.length,
       data: orders,
     });
-  })
+  });
 
-  getOrderById = asyncHandler(async(req,res,next)=>{
-    const {id} = req.params;
+  getOrderById = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
     const order = await Order.findById(id);
     if (!order) {
-      return next(new ApiError(`Order not found`,404));
+      return next(new ApiError(`Order not found`, 404));
     }
     res.status(200).json({
       status: "success",
       data: order,
     });
-  })
+  });
 
-  
+  updateOrderPaied = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const order = await Order.findById(id);
+    if (!order) {
+      return next(new ApiError(`Order not found`, 404));
+    }
+    order.ispaid = true;
+    order.paidAt = Date.now();
+    const updatedOrder = await order.save();
 
+    res.status(200).json({
+      status: "success",
+      data: updatedOrder,
+    });
+  });
+
+  cancleOrder = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const order = await Order.findById(id);
+    if (!order) {
+      return next(new ApiError(`Order not found`, 404));
+    }
+    order.status = "rejected";
+    const updatedOrder = await order.save();
+
+    res.status(200).json({
+      status: "success",
+      data: updatedOrder,
+    });
+  });
+  acceptOrder = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const order = await Order.findById(id);
+    if (!order) {
+      return next(new ApiError(`Order not found`, 404));
+    }
+    order.status = "accepted";
+    const updatedOrder = await order.save();
+
+    res.status(200).json({
+      status: "success",
+      data: updatedOrder,
+    });
+  });
 }
 module.exports = new orderController();

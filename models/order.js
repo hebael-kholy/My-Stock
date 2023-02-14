@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const user = require("./user");
+
 const orderSchema = new mongoose.Schema(
     {
         user:{
@@ -51,7 +51,7 @@ const orderSchema = new mongoose.Schema(
 )
 
 orderSchema.pre(/^find/,function(next){
-    this.populate({path:'user', select:'name'}).populate({path:'cartItems.product', select:'title'})
+    this.populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'})
     next()
 })
 
