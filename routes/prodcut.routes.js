@@ -25,5 +25,8 @@ productRouter.route("/image/:id")
 .patch(multer, productController.uploadImage)
 .put(multer, productController.uploadImage);
 
+productRouter.route("/updateall/:id").put(multer,productController.updateDataAndImage)
+productRouter.route("/createall").post(multer,productController.createProductall)
+
 productRouter.use("/review/:id", reviewRoute);
 module.exports = productRouter;

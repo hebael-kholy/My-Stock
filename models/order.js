@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const user = require("./user");
 const orderSchema = new mongoose.Schema(
     {
         user:{
@@ -48,6 +49,11 @@ const orderSchema = new mongoose.Schema(
     },
     { timestamps:true }
 )
+
+orderSchema.pre(/^find/,function(next){
+    this.populate({path:'user', select:'name'}).populate({path:'cartItems.product', select:'title'})
+    next()
+})
 
 const orderModel = mongoose.model('Order', orderSchema);
 module.exports = orderModel

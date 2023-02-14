@@ -36,6 +36,30 @@ class productController {
     });
   });
 
+  createProductall = asyncHandler(async (req, res, next) => {
+    const {
+      title,
+      description,
+      price,
+      brand,
+      isSale,
+      quantity,
+      category,
+      rating,
+    } = req.body;
+    let image;
+    const result = await cloud.uploads(req.files[0].path);
+    if(req.file) image = result.url;
+
+    const newProduct = new Product({title,slug: slugify(title),description,price,brand,isSale,quantity,category,rating,image});
+    const added = await newProduct.save();
+    if (!added) return next(new ApiError(`Faild to create product`, 400));
+    res.status(200).json({
+      status: "success",
+      data: added,
+    });
+  });
+
   uploadImage = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
 
@@ -52,6 +76,42 @@ class productController {
       data: product,
     });
   });
+
+  updateDataAndImage = asyncHandler(async (req, res, next) => {
+    let image ;
+    const { id } = req.params;
+    const {
+      title,
+      description,
+      price,
+      brand,
+      isSale,
+      quantity,
+      category,
+      rating,
+    } = req.body;
+    const result = await cloud.uploads(req.files[0].path);
+    console.log(result)
+    if (!result) return next(new ApiError(`Faild to upload image`, 400));
+    
+    if(req.file) image = result.url;
+    
+    const user = await Product.findByIdAndUpdate(
+      id,
+      { title, description, price, brand, isSale, quantity, category, rating ,image:result.url },
+
+      { new: true }
+    );
+    if (!user) {
+      return next(new ApiError(`Invalid id ${id} `, 404));
+    }
+    fs.unlinkSync(req.files[0].path);
+    res.status(200).json({
+      status: "success",
+      data: user,
+    });
+
+  })
 
   findAll = asyncHandler(async (req, res, next) => {
     const page = req.query.page * 1 || 1; // * 1 to convert page to number

@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const Cart = require("../models/cart");
 const Order = require("../models/order");
 const Product = require("../models/product");
-
+const User = require("../models/user");
 
 class orderController {
   createCashOrder = asyncHandler(async (req, res, next) => {
@@ -32,7 +32,7 @@ class orderController {
       const bulkoption = cart.cartItems.map((item) => ({
         updateOne: {
           filter: {_id: item.product}, // find product whose id  = item .product
-          update: { $inc: { quantitiy: -item.quantitiy} },
+          update: { $inc: { quantity: -item.quantitiy} },
         }
       }));  
     
@@ -47,5 +47,47 @@ class orderController {
       data: order,
     });
   });
+
+  getUserOrder = asyncHandler(async(req,res,next)=>{
+    const {id} = req.params;
+    const orders = await Order.find({user:id});
+    res.status(200).json({
+      status: "success",
+      data: orders,
+    });
+
+  })
+
+  getAllOrder = asyncHandler(async(req,res,next)=>{
+    const {id} = req.params;
+    const user = await User.findById(id);
+    if (!user ){
+      return next(new ApiError(`User not found`,404));
+    }
+    if(user.role!== "ADMIN"){
+      return next(new ApiError(`User not authorized`,401));
+    }
+    const orders = await Order.find({});
+    res.status(200).json({
+      status: "success",
+      orderCount: orders.length,
+      data: orders,
+    });
+  })
+
+  getOrderById = asyncHandler(async(req,res,next)=>{
+    const {id} = req.params;
+    const order = await Order.findById(id);
+    if (!order) {
+      return next(new ApiError(`Order not found`,404));
+    }
+    res.status(200).json({
+      status: "success",
+      data: order,
+    });
+  })
+
+  
+
 }
 module.exports = new orderController();
