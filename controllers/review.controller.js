@@ -29,7 +29,7 @@ class reviewController{
         const filter = {};
         if(req.params.id) filter.product = req.params.id;
         
-        const review = await Review.find(filter).skip(skip).limit(limit).populate({path:"product",select:"title"});
+        const review = await Review.find(filter).skip(skip).limit(limit);
         if (!review){ return next(new ApiError(`Can't find reviews`, 404));}
         res.status(200).json({
             reviewCount:review.length,

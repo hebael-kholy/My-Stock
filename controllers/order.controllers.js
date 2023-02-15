@@ -115,7 +115,7 @@ class orderController {
     if (!order) {
       return next(new ApiError(`Order not found`, 404));
     }
-    order.status = "rejected";
+    if(order.status == 'pending') order.status = "rejected";
     const updatedOrder = await order.save();
 
     res.status(200).json({
@@ -123,6 +123,7 @@ class orderController {
       data: updatedOrder,
     });
   });
+ 
   acceptOrder = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const order = await Order.findById(id);

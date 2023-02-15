@@ -1,15 +1,22 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
-const cors = require("cors")
+const cors = require("cors");
+
+// const swaggerJsdoc = require("swagger-jsdoc");
+// const swaggerUi = require("swagger-ui-express");
+
 const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/gategory.routes");
 const productRouter = require("./routes/prodcut.routes");
 const CartRouter = require("./routes/cart.routes");
 const reviewRouter = require("./routes/review.routes");
 const orderRouter = require("./routes/order.routes");
+const wishlistRouter = require("./routes/wishlist.routes");
+
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
+
 
 const app = express();
 
@@ -27,9 +34,38 @@ const corsOptions = {
   ],
 }
 
+/*
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'EcommerceITI API',
+      description:"ecommerce iti api information",
+      contact:{
+        name:"MY Amazing Developer",
+      },
+      servers:["http://localhost:8080"]
+    }
+  },
+  apis: ['.routes/*.js'],
+}
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));*/
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('images'))
+
+// /**
+//  * @swagger
+//  * /user:
+//  *  get:
+//  *    description: Get all users
+//  *    responses:
+//  *      '200':
+//  *        description: OK
+// */
+
 
 app.use('/users',userRouter);
 app.use('/category',categoryRouter);
@@ -37,6 +73,7 @@ app.use('/product',productRouter);
 app.use('/cart',CartRouter);
 app.use('/review',reviewRouter);
 app.use('/order',orderRouter);
+app.use('/wishlist',wishlistRouter);
 
 app.all('*',(req, res, next)=>{
     next(new ApiError(`can't find this route ${req.originalUrl}`, 400))
@@ -50,6 +87,9 @@ mongoose.connect(dbURL, () => {
       console.log(`server listening on http://localhost:${PORT}`);
     });
 });
+
+//local database
+
 // mongoose.connect(process.env.DB).then( ()=> {
 //   console.log("connected to databse succesfully")
 // });

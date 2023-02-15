@@ -31,7 +31,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ["USER", "ADMIN"],
     default: "USER",
-  }
+  },
+  //child reference one to many 
+  wishList:[{
+    type:mongoose.Schema.ObjectId,
+    ref:'Product',
+  }]
 });
 
 

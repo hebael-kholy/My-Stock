@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const carytSchema = new mongoose.Schema(
+const cartSchema = new mongoose.Schema(
     {
         cartItems:[{
                 product:{
@@ -26,5 +26,10 @@ const carytSchema = new mongoose.Schema(
     }
 );
 
-const cartModel = mongoose.model('Cart', carytSchema);
+cartSchema.pre(/^find/,function(next){
+    this.populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'})
+    next()
+})
+
+const cartModel = mongoose.model('Cart', cartSchema);
 module.exports = cartModel;
