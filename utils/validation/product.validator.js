@@ -29,10 +29,6 @@ exports.createProduct = [
         .isFloat({ min: 1, max: 5 })
         .withMessage("Product rating must be a number between 1 and 5"),
 
-        check("brand")
-        .notEmpty()
-        .withMessage("Product brand is required"),
-
         check("category")
         .notEmpty()
         .withMessage("Product category is required")
