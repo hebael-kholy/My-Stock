@@ -49,7 +49,7 @@ class productController {
     } = req.body;
     let image;
     const result = await cloud.uploads(req.files[0].path);
-    if(req.file) image = result.url;
+    if(req.files[0]) image = result.url;
 
     const newProduct = new Product({title,slug: slugify(title),description,price,brand,isSale,quantity,category,rating,image});
     const added = await newProduct.save();
