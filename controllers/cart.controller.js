@@ -57,7 +57,7 @@ class cartController{
         const filter = {};
         if(req.params.userid) filter.user = req.params.userid;
 
-        let cart = await Cart.findOne(filter).populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'});
+        let cart = await Cart.findOne(filter).populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title image description'});
         if(!cart){
             return next(new ApiError(`user cart not found`,404));
         }
