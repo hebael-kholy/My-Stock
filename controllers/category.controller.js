@@ -9,10 +9,16 @@ class categoryController{
 
     createCategory = asyncHandler(async(req,res,next)=>{
         const {name} = req.body;
+        let image;
+        const result = await cloud.uploads(req.files[0].path);
+        if(req.files[0]) image = result.url;
+       
         const newCategory = new Category({
             name,
-            slug:slugify(name)
+            slug:slugify(name),
+            image
         })
+
         const added = await newCategory.save();
         if(!added) return next(new ApiError(`Faild to create category`,400))
         res.status(200).json({

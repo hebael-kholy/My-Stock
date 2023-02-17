@@ -10,7 +10,7 @@ categoryRouter.use("/:cid/product", productRoutes);
 
 categoryRouter
   .route("/")
-  .post(categoryValidator, categoryController.createCategory)
+  .post(multer,categoryValidator, categoryController.createCategory)
   .get(categoryController.findAll);
 
 categoryRouter
