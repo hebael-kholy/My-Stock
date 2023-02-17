@@ -49,11 +49,11 @@ class orderController {
   });
 
   getUserOrder = asyncHandler(async (req, res, next) => {
-  
     let filter = {};
     if (req.query.status) filter.status = req.query.status;
-    if(req.params.id) filter.user = req.params.id;
-    const orders = await Order.find(filter);
+    if (req.params.id) filter.user = req.params.id;
+    const orders = await Order.find(filter).populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'});
+
     res.status(200).json({
       status: "success",
       data: orders,
@@ -72,7 +72,7 @@ class orderController {
     let filter = {};
     if (req.query.status) filter.status = req.query.status;
 
-    const orders = await Order.find(filter);
+    const orders = await Order.find(filter).populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'});
 
     res.status(200).json({
       status: "success",
@@ -115,7 +115,7 @@ class orderController {
     if (!order) {
       return next(new ApiError(`Order not found`, 404));
     }
-    if(order.status == 'pending') order.status = "rejected";
+    if (order.status == "pending") order.status = "rejected";
     const updatedOrder = await order.save();
 
     res.status(200).json({
@@ -123,7 +123,7 @@ class orderController {
       data: updatedOrder,
     });
   });
- 
+
   acceptOrder = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const order = await Order.findById(id);

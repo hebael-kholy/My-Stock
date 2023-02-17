@@ -19,9 +19,13 @@ class UserController{
             role
         })
         await newUser.save();
+        const token = JWT.sign({userID:newUser._id},process.env.JWT_SECRT_KEY,{
+            expiresIn:process.env.JWT_EXPIRE_TIME
+        })
         res.status(200).json({
             status: "success",
-            data:newUser
+            data:newUser,
+            token
         });
     })
 
@@ -58,9 +62,18 @@ class UserController{
 
     updateOne = asyncHandler(async(req,res,next)=>{
         const{id} = req.params;
-        const{name,email,password,gender} = req.body;
+        const{name,email,gender,password} = req.body;
         
-        const user = await User.findByIdAndUpdate(id,{name,email,password,gender},{new:true});
+        let obj ={};
+        obj.name = name;
+        obj.email = email;
+        obj.gender = gender
+
+        const salt = await bcrypt.genSalt(12);
+        if(req.body.password) obj.password = await bcrypt.hash(req.body.password, salt);
+        
+        console.log(obj);
+        const user = await User.findByIdAndUpdate(id,obj,{new:true});
         if (!user){ return next(new ApiError(`Invalid id ${id} `, 404));}
         
         res.status(200).json({
@@ -78,6 +91,7 @@ class UserController{
         }
         const isMatch = await bcrypt.compare(password,user.password);
         if(!isMatch)return next(new ApiError(`Invalid Email or Password`,401));
+
         const token = JWT.sign({userID:user.id},process.env.JWT_SECRT_KEY,{
             expiresIn:process.env.JWT_EXPIRE_TIME
         })
@@ -105,6 +119,8 @@ class UserController{
         }
     
         res.status(200).json({
+
+
             status:"Sucess",
             user:user,
             token
@@ -124,10 +140,7 @@ class UserController{
         })
     })
 
-    // getloggedUserData = asyncHandler(async(req,res,next)=>{
-    //     req.params.id = req.user._id;
-    //     next();
-    // })
+
 }
 
 module.exports = new UserController();
