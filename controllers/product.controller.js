@@ -78,7 +78,6 @@ class productController {
   });
 
   updateDataAndImage = asyncHandler(async (req, res, next) => {
-    let image ;
     const { id } = req.params;
     const {
       title,
@@ -90,15 +89,13 @@ class productController {
       category,
       rating,
     } = req.body;
+    let image;
     const result = await cloud.uploads(req.files[0].path);
-    console.log(result)
-    if (!result) return next(new ApiError(`Faild to upload image`, 400));
-    
-    if(req.file) image = result.url;
+    if(req.files[0]) image = result.url;
     
     const user = await Product.findByIdAndUpdate(
       id,
-      { title, description, price, brand, isSale, quantity, category, rating ,image:result.url },
+      { title, description, price, brand, isSale, quantity, category, rating ,image},
 
       { new: true }
     );
@@ -152,18 +149,6 @@ class productController {
       data: product,
     });
   });
-  /*findone = asyncHandler(async (req, res,next) => {
-        const {id} = req.params;
-        const product = await Product.findById(id).populate({path:"category",select:"name"});
-
-        if (!product) {
-            return next(new ApiError(`Invalid product id ${id}`, 404));
-        }
-        res.status(200).json({
-            status: "success",
-            data: product
-        });
-    })*/
 
   findone = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
