@@ -13,7 +13,7 @@ const CartRouter = require("./routes/cart.routes");
 const reviewRouter = require("./routes/review.routes");
 const orderRouter = require("./routes/order.routes");
 const wishlistRouter = require("./routes/wishlist.routes");
-const forgetRouter = require("./routes/forgetpass.routes");
+// const forgetRouter = require("./routes/forgetpass.routes");
 
 const ApiError = require("./utils/apiError");
 const globalError = require("./controllers/error.controller");
@@ -75,7 +75,7 @@ app.use('/cart',CartRouter);
 app.use('/review',reviewRouter);
 app.use('/order',orderRouter);
 app.use('/wishlist',wishlistRouter);
-app.use('/forgetpass',forgetRouter);
+// app.use('/forgetpass',forgetRouter);
 
 
 app.all('*',(req, res, next)=>{
