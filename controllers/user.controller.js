@@ -140,6 +140,21 @@ class UserController{
         })
     })
 
+    updateAdminInfo = asyncHandler(async(req,res,next)=>{
+        const {id} = req.params;
+        const result = await cloud.uploads(req.files[0].path);
+        let name;
+        let image;
+        if(req.files[0]) image = result.url;
+        if(req.body.name) name =req.body.name;
+        const user = await User.findByIdAndUpdate(id,{image,name},{new:true});
+        fs.unlinkSync(req.files[0].path);
+        res.status(200).json({
+            status:"Sucess",
+            user:user
+        })
+    })
+
 
 }
 

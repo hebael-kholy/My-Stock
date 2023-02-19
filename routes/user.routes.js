@@ -25,9 +25,11 @@ userRouter.route("/images/:id")
 .put(multerConfig, userController.uploadImage);
 
 userRouter.route("/admin/login").post(userController.Adminlogin);
+userRouter.put('/admin/update/:id',multerConfig,userAuth,isAdmin, userController.updateAdminInfo);
+
 
 userRouter.use("/:userid/cart",cartRoute)
 
-// userRouter.route("/getme").get(userController.getloggedUserData,userController.findone);
+
 
 module.exports = userRouter;
