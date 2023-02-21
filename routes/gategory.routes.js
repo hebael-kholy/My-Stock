@@ -16,8 +16,8 @@ categoryRouter
 categoryRouter
   .route("/:slug")
   .get(categoryController.findone)
-  .patch(multer,categoryController.updateOne)
-  .put(multer,categoryController.updateOne)
+  .patch(categoryController.updateOne)
+  .put(categoryController.updateOne)
   .delete(categoryController.deleteOne);
 
 categoryRouter

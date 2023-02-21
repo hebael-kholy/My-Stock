@@ -28,15 +28,11 @@ class categoryController{
     })
     uploadImage = asyncHandler(async(req,res,next)=>{
         const {slug} = req.params;
-        
         const result = await cloud.uploads(req.files[0].path);
         if(!result) return next(new ApiError(`Faild to upload image`,400));
-
-        const category = await Category.findByIdAndUpdate(slug,{image:result.url},{new:true});
+        const category = await Category.findOneAndUpdate(slug,{image:result.url},{new:true});
         if(!category) return next(new ApiError(`Invalid category name ${slug}`, 404));
-        
         fs.unlinkSync(req.files[0].path);
-        
         res.status(200).json({
             status: "success",
             data:category
@@ -70,10 +66,7 @@ class categoryController{
     updateOne = asyncHandler(async(req,res,next)=>{
         const{slug} = req.params;
         const{name} = req.body;
-        let image;
-        const result = await cloud.uploads(req.files[0].path);
-        if(req.files[0]) image = result.url;
-        const cate = await Category.findOneAndUpdate({slug},{name,slug:slugify(name),image},{new:true});
+        const cate = await Category.findOneAndUpdate({slug},{name,slug:slugify(name)},{new:true});
         if (!cate){ return next(new ApiError(`Invalid Category name ${slug} `, 404));}
         res.status(200).json({
             status: "success",

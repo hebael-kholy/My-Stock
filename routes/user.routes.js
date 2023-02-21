@@ -25,7 +25,7 @@ userRouter.route("/images/:id")
 .put(multerConfig, userController.uploadImage);
 
 userRouter.route("/admin/login").post(userController.Adminlogin);
-userRouter.put('/admin/update/:id',multerConfig,userAuth,isAdmin, userController.updateAdminInfo);
+userRouter.put('/admin/update/:id',userAuth,isAdmin, userController.updateAdminInfo);
 
 
 userRouter.use("/:userid/cart",cartRoute)
