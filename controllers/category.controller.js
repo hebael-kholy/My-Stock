@@ -27,10 +27,10 @@ class categoryController{
         });
     })
     uploadImage = asyncHandler(async(req,res,next)=>{
-        const {slug} = req.params;
+        const {id} = req.params;
         const result = await cloud.uploads(req.files[0].path);
         if(!result) return next(new ApiError(`Faild to upload image`,400));
-        const category = await Category.findOneAndUpdate(slug,{image:result.url},{new:true});
+        const category = await Category.findByIdAndUpdate(id,{image:result.url},{new:true});
         if(!category) return next(new ApiError(`Invalid category name ${slug}`, 404));
         fs.unlinkSync(req.files[0].path);
         res.status(200).json({

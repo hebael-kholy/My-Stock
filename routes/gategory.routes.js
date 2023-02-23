@@ -21,7 +21,7 @@ categoryRouter
   .delete(categoryController.deleteOne);
 
 categoryRouter
-  .route("/images/:slug")
+  .route("/images/:id")
   .patch(multer, categoryController.uploadImage)
   .put(multer, categoryController.uploadImage);
 
