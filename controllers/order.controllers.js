@@ -138,5 +138,29 @@ class orderController {
       data: updatedOrder,
     });
   });
+  getLast3Order = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    if (!user) {
+      return next(new ApiError(`User not found`, 404));
+    }
+    if (user.role !== "ADMIN") {
+      return next(new ApiError(`User not authorized`, 401));
+    }
+    let filter = {};
+    if (req.query.status) filter.status = req.query.status;
+
+    const orders = await Order.find(filter)
+    .populate({path:'user',select:'name'})
+    .populate({path:'cartItems.product', select:'title'})
+    .sort({createdAt:-1})
+    .limit(3);
+
+    res.status(200).json({
+      status: "success",
+      orderCount: orders.length,
+      data: orders,
+    });
+  });
 }
 module.exports = new orderController();

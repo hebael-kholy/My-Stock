@@ -21,6 +21,8 @@ productRouter.route("/get/:id").get(productController.findone)
 
 productRouter.route("/products/sale").get(productController.saleProducts);
 
+productRouter.route("/top").get(productController.findTop3Product);
+
 productRouter.route("/image/:id")
 .patch(multer, productController.uploadImage)
 .put(multer, productController.uploadImage);

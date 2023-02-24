@@ -34,6 +34,7 @@ class UserController{
         if (!users){ return next(new ApiError(`can't find users`, 404));}
         res.status(200).json({
             status: "success",
+            usersCount:users.length,
             data: users
         });
     })

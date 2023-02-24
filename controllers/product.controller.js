@@ -5,6 +5,7 @@ const slugify = require("slugify");
 const cloud = require("../utils/CloudinaryConfig");
 const fs = require("fs");
 
+
 class productController {
   createProduct = asyncHandler(async (req, res, next) => {
     const {
@@ -59,13 +60,13 @@ class productController {
       data: added,
     });
   });
+  
 
   uploadImage = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-
     const result = await cloud.uploads(req.files[0].path);
     if (!result) return next(new ApiError(`Faild to upload image`, 400));
-
+   
     const product = await Product.findByIdAndUpdate(id,{image:result.url},{new:true});
     if (!product) return next(new ApiError(`Invalid product id ${id}`, 404));
 
@@ -116,7 +117,7 @@ class productController {
     const skip = (page - 1) * limit;
     const filter = {};
     if (req.params.cid) filter.category = req.params.cid;
-
+    
     const product = await Product.find(filter)
       .skip(skip)
       .limit(limit)
@@ -202,6 +203,17 @@ class productController {
 
     res.status(200).json({
       status: "success",
+      data: product,
+    });
+  });
+
+  findTop3Product = asyncHandler(async (req, res, next) => { 
+    const product = await Product.find({}).sort({rating:-1}).limit(3);
+    if (!product) {
+      return next(new ApiError(`Can't find Products`, 404));
+    }
+    res.status(200).json({
+      productCount: product.length,
       data: product,
     });
   });
