@@ -92,11 +92,11 @@ mongoose.connect(dbURL, () => {
 });
 
 //local database
-
-// mongoose.connect(process.env.DB).then( ()=> {
-//   console.log("connected to databse succesfully")
-// });
-// app.listen(PORT, () => {
-//         console.log(`server listening on http://localhost:${PORT}`);
-//   });
+/*
+ mongoose.connect(process.env.DB).then( ()=> {
+   console.log("connected to databse succesfully")
+ });
+ app.listen(PORT, () => {
+         console.log(`server listening on http://localhost:${PORT}`);
+   });*/
 
