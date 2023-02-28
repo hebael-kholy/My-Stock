@@ -73,7 +73,6 @@ class UserController{
         const salt = await bcrypt.genSalt(12);
         if(req.body.password) obj.password = await bcrypt.hash(req.body.password, salt);
         
-        console.log(obj);
         const user = await User.findByIdAndUpdate(id,obj,{new:true});
         if (!user){ return next(new ApiError(`Invalid id ${id} `, 404));}
         

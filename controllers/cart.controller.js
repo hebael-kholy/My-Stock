@@ -1,6 +1,7 @@
 const ApiError = require("../utils/apiError");
 const asyncHandler = require("express-async-handler");
 const Cart = require("../models/cart");
+const Coupon = require("../models/coupon");
 const Product = require("../models/product");
 
 class cartController {
@@ -137,6 +138,28 @@ class cartController {
       data: cart,
     });
   });
+
+  applyCoupon = asyncHandler(async (req, res, next) => {
+    const { userid } = req.params;
+    const coupon =  await Coupon.findOne({
+      name:req.body.coupon,
+      expire:{$gt:Date.now()}
+    });
+    if (!coupon) {return next(new ApiError(`Invalid coupon`, 404));}
+    const cart = await Cart.findOne({ user: userid });
+    if (!cart) {return next(new ApiError(`Invalid user Cart`, 404));}
+    const totalPrice = cart.totalCarPrice;
+    const totalAfterDiscount = (totalPrice - (totalPrice * coupon.discount / 100)).toFixed(2);
+
+    cart.totalCarPrice = totalAfterDiscount;
+    await cart.save();
+    res.status(200).json({
+      status: "success",
+      numOFItem: cart.cartItems.length,
+      data: cart,
+    });
+
+  })
 }
 
 module.exports = new cartController();
