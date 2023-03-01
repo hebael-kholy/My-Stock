@@ -78,7 +78,7 @@ class cartController {
     const { userid, itemid } = req.params;
     // using pull object to delete item form cartItems array of cart
     const cart = await Cart.findOneAndUpdate(
-      userid,
+      { user: userid },
       { $pull: { cartItems: { _id: itemid } } },
       { new: true }
     );
@@ -100,7 +100,7 @@ class cartController {
   });
   clearCart = asyncHandler(async (req, res, next) => {
     const { userid } = req.params;
-    const cart = await Cart.findOneAndDelete(userid);
+    const cart = await Cart.findOneAndDelete({ user: userid });
     if (!cart) {
       return next(new ApiError(`user cart not found`, 404));
     }
