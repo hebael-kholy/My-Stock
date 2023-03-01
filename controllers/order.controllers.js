@@ -14,7 +14,7 @@ class orderController {
       return next(new ApiError(404, "Cart not found"));
     }
     //2- calculate total price and create new order
-    const cartPrice = cart.totalCarPrice;
+    const cartPrice = cart.totalAfterDiscount?cart.totalAfterDiscount:cart.totalCarPrice;
     const TOP = cartPrice + shippingPrice + taxPrice;
 
     const order = new Order({
