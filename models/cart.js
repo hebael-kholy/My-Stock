@@ -16,6 +16,7 @@ const cartSchema = new mongoose.Schema(
             }
         ],
         totalCarPrice:Number,
+        totalAfterDiscount:Number,
         user:{
             type:mongoose.Schema.ObjectId,
             ref:'User'

@@ -47,6 +47,7 @@ class cartController {
       total += item.price * item.quantitiy;
     });
     cart.totalCarPrice = total;
+    cart.totalAfterDiscount = undefined;
     await cart.save();
     res.status(200).json({
       status: "success",
@@ -89,6 +90,7 @@ class cartController {
       total += item.price * item.quantitiy;
     });
     cart.totalCarPrice = total;
+    cart.totalAfterDiscount = undefined;
 
     await cart.save();
     res.status(200).json({
@@ -131,6 +133,7 @@ class cartController {
       total += item.price * item.quantitiy;
     });
     cart.totalCarPrice = total;
+    cart.totalAfterDiscount = undefined;
     await cart.save();
     res.status(200).json({
       status: "success",
@@ -145,18 +148,19 @@ class cartController {
       name:req.body.coupon,
       expire:{$gt:Date.now()}
     });
-    if (!coupon) {return next(new ApiError(`Invalid coupon`, 404));}
+    if (!coupon) {return next(new ApiError(`Invalid coupon or expired `, 404));}
     const cart = await Cart.findOne({ user: userid });
     if (!cart) {return next(new ApiError(`Invalid user Cart`, 404));}
     const totalPrice = cart.totalCarPrice;
     const totalAfterDiscount = (totalPrice - (totalPrice * coupon.discount / 100)).toFixed(2);
 
-    cart.totalCarPrice = totalAfterDiscount;
+    cart.totalAfterDiscount = totalAfterDiscount;
     await cart.save();
     res.status(200).json({
       status: "success",
       numOFItem: cart.cartItems.length,
       data: cart,
+      discount:(totalPrice * coupon.discount / 100)
     });
 
   })
