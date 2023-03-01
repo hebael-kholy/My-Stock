@@ -156,11 +156,13 @@ class cartController {
 
     cart.totalAfterDiscount = totalAfterDiscount;
     await cart.save();
+
+    const discount= (totalPrice * coupon.discount / 100);
     res.status(200).json({
       status: "success",
       numOFItem: cart.cartItems.length,
       data: cart,
-      discount:(totalPrice * coupon.discount / 100)
+      discount:discount
     });
 
   })
