@@ -30,7 +30,7 @@ class forgetController {
      <p>We recieved a request to rest the password on E-commerceiTi Account.</p>
      <p><b>${code}</b> Enter this code to complete the reset </p>
       <p>Thanks for helping us keep your account secure.</p>
-      <p>The E-commerceiTi Team</p>
+      <p>The Craft Team</p>
      </div>`;
 
     try {
