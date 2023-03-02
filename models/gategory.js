@@ -19,7 +19,8 @@ const categorySchema = new mongoose.Schema(
         image:{
             type:String,
             default:URL
-        }
+        },
+        orderedItems:[String]
     },
     {
         timestamps:true

@@ -208,7 +208,7 @@ class productController {
   });
 
   findTop3Product = asyncHandler(async (req, res, next) => { 
-    const product = await Product.find({}).sort({rating:-1}).limit(3);
+    const product = await Product.find({rating:{$gt:3,$lt:5}}).sort({rating:-1}); 
     if (!product) {
       return next(new ApiError(`Can't find Products`, 404));
     }

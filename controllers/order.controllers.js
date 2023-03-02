@@ -4,6 +4,7 @@ const Cart = require("../models/cart");
 const Order = require("../models/order");
 const Product = require("../models/product");
 const User = require("../models/user");
+const Category = require("../models/gategory")
 
 class orderController {
   createCashOrder = asyncHandler(async (req, res, next) => {
@@ -52,7 +53,7 @@ class orderController {
     let filter = {};
     if (req.query.status) filter.status = req.query.status;
     if (req.params.id) filter.user = req.params.id;
-    const orders = await Order.find(filter).populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'});
+    const orders = await Order.find(filter);
 
     res.status(200).json({
       status: "success",
@@ -72,7 +73,7 @@ class orderController {
     let filter = {};
     if (req.query.status) filter.status = req.query.status;
 
-    const orders = await Order.find(filter).populate({path:'user',select:'name'}).populate({path:'cartItems.product', select:'title'});
+    const orders = await Order.find(filter);
 
     res.status(200).json({
       status: "success",
@@ -130,9 +131,14 @@ class orderController {
     if (!order) {
       return next(new ApiError(`Order not found`, 404));
     }
+
+    order.cartItems.forEach(async item =>{
+      const category = await Category.findById(item.product.category);
+      category.orderedItems.push(item.product._id);
+      await Category.findByIdAndUpdate(item.product.category , category)
+    })
     order.status = "accepted";
     const updatedOrder = await order.save();
-
     res.status(200).json({
       status: "success",
       data: updatedOrder,
@@ -151,8 +157,6 @@ class orderController {
     if (req.query.status) filter.status = req.query.status;
 
     const orders = await Order.find(filter)
-    .populate({path:'user',select:'name'})
-    .populate({path:'cartItems.product', select:'title'})
     .sort({createdAt:-1})
     .limit(3);
 
