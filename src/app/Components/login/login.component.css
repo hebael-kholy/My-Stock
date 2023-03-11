@@ -1,37 +1,38 @@
-.btn-primary {
-  background-color: #c057f7 !important;
+label{
+  color: #9d28dc;
 }
-mat-card {
-  box-shadow: 1px 4px 18px 3px grey;
-  max-width: 600px;
-  margin: 2em auto;
-  text-align: center;
-  max-height: 600px;
+input:focus{
+  border-color: #9d28dc;
+  box-shadow: none;
 }
-.header {
-  text-align: center;
+button{
+  background-color: #c057f7;
+  outline: none;
+  border: none;
+  color: white;
 }
-.full-width {
-  width: 80%;
+button:hover{
+  background-color: #c166f1;
+  color: white;
 }
-.forgot-password {
-  padding-left: 0px;
+.reg{
+  color: #b744f6;
 }
-.email-input {
-  padding-top: 10px;
+button:disabled{
+  background-color: #c057f7;
+  outline: none;
+  border: none;
+  color: white;
 }
-.aLink {
-  float: right;
-  padding-right: 60px;
-  text-decoration: none;
+i{
+  position: absolute;
+  right: 11px;
+  top: 41px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #9d28dc;
 }
-.errorMsg {
-  color: red;
-  font-size: 12px;
-  position: relative;
-  left: -140px;
-}
-.overlay {
+.overlay{
   position: fixed;
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
@@ -39,12 +40,12 @@ mat-card {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
   z-index: 2;
 }
-.overlay img {
+.overlay img{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 }

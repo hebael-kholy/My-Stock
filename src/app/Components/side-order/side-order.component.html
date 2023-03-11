@@ -1,0 +1,140 @@
+<div class="nav-settings">
+  <div class="sideNavbar">
+      <div class="userImg">
+        <img src= "{{imagePath}}" alt="user">
+      </div>
+      <ul>
+          <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded" routerLink="/profile/settings">Settings</a></li>
+          <li routerLinkActive="active"><span><i class="bi bi-cart-check-fill"></i></span><a class="nav-link rounded" routerLink="/profile/orders" >My Orders</a></li>
+      </ul>
+  </div> 
+ 
+ <div class="conter">
+  <div class="orderNav">
+    <div class="title">Order History</div>
+    <div>
+      <select name="" id="">
+        <option value="Success" (click)="accepted()">Success</option>
+        <option value="Pending" (click)="pending()">Pending</option>
+        <option value="Rejected" (click)="rejected()">Rejected</option>
+      </select>
+    </div>
+    <!-- <div>
+      <app-search-order (searchTextChanged)="onSearchTextEntered($event)"></app-search-order>
+      <input type="search" name="title" placeholder="Search">
+    </div> -->
+    <!-- <div>
+      <select name="" id="">
+        <option value="" disabled selected>order by</option>
+        <option value="Success">Alphapet</option>
+        <option value="Pending">Date</option>
+      </select>
+    </div> -->
+  </div>
+  <div class="navOrder">
+    <div class="item">
+      <div>Product Name</div>
+    <div>Quantity</div>
+    <div>Price</div>
+    </div>
+    <div class="items">
+      <div>Total</div>
+    <div>Order Date</div>
+    <div>Status</div>
+    </div>
+  </div>
+  <hr>
+  <!-- *ngIf="searchText ===''|| field" -->
+  <!-- *ngIf="searchText ===''|| field.product.title.toLowerCase().includes(searchText) -->
+  <div class="orders" *ngIf="status ==='accepted'">
+      <div *ngFor="let order of acceptorders.data |paginate:{itemsPerPage:6, currentPage:p}" >
+        <div class="oneRow">
+          <div class="rowOne">
+            <div class="tableRow" *ngFor="let field of order.cartItems">
+                <div>{{field.product.title}}</div>
+                 <div>{{field.quantitiy}}</div>
+                 <div>{{field.price}}</div>
+                 <br>
+                </div>
+          </div>
+             <div class="total">
+               <div>{{order.totalPrice}}</div>
+               <div>{{order.creationDate.split("T")[0]}}</div>
+               <div><i class="bi bi-check-circle accepted"></i></div>
+             </div>
+        </div>
+            <hr>
+          </div>    
+          <pagination-controls *ngIf="acceptorders.data" (pageChange)="p = $event" class="float-right"></pagination-controls>
+          <div class="emptyOrders" *ngIf="acceptorders.data.length == 0">
+            <img src="assets/empty_item.svg">
+            <div>No orders to display</div>
+          </div> 
+        </div>
+
+        <div class="orders" *ngIf="status ==='pending'">
+          <div *ngFor="let o of pendingOrders.data|paginate:{itemsPerPage:6, currentPage:p2}">
+            <div class="oneRow">
+              <div class="rowOne">
+                <div class="tableRow" *ngFor="let f of o.cartItems">
+                  <div>{{f.product.title}}</div>
+                     <div>{{f.quantitiy}}</div>
+                     <div>{{f.price}}</div>
+                     <br>
+                    </div>
+              </div>
+                 <div class="total">
+                   <div>{{o.totalPrice}}</div>
+                   <div>{{o.creationDate.split("T")[0]}}</div>                     
+                   <div>
+                    <i class="bi bi-hourglass-split pending"></i>
+                  </div>
+                  <i class="bi bi-trash3 trash" (click)="deleteOrder($event,o._id)"></i>
+                </div>
+            </div>
+                <hr>
+              </div>
+          <pagination-controls *ngIf="pendingOrders.data" (pageChange)="p2 = $event" class="float-right"></pagination-controls>
+              <div class="text-center" *ngIf="deleteLoading">
+                <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+            </div>
+            <div class="emptyOrders" *ngIf="pendingOrders.data.length == 0">
+              <img src="assets/empty_item.svg">
+              <div>No orders to display</div>
+            </div>
+            </div>
+
+        <div class="orders" *ngIf="status==='rejected'">
+          <div *ngFor="let d of rejectOrders.data|paginate:{itemsPerPage:6, currentPage:p3}">
+            <div class="oneRow">
+              <div class="rowOne">
+                <div class="tableRow" *ngFor="let c of d.cartItems">
+                  <div>{{c.product.title}}</div>
+                     <div>{{c.quantitiy}}</div>
+                     <div>{{c.price}}</div>
+                     <br>
+                    </div>
+              </div>
+                 <div class="total">
+                   <div>{{d.totalPrice}}</div>
+                   <div>{{d.creationDate.split("T")[0]}}</div>
+                   <div><i class="bi bi-x-circle rejected"></i></div>
+                 </div>
+            </div>
+                <hr>
+              </div>   
+          <pagination-controls *ngIf="rejectOrders.data" (pageChange)="p3 = $event" class="float-right"></pagination-controls>
+              <div class="emptyOrders" *ngIf="rejectOrders.data.length == 0">
+                <img src="assets/empty_item.svg">
+                <div>No orders to display</div>
+              </div> 
+        </div>
+         
+  <div class="text-center" *ngIf="isloading">
+    <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+</div>
+ </div>
+</div>
+
+
+

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AdminProject": {
+    "Project": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/admin-project",
+            "outputPath": "dist/project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -26,8 +26,12 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -40,12 +44,14 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "5mb"
+                  "maximumError": "200mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "40kb"
+
+                  "maximumError": "90kb"
+
                 }
               ],
               "outputHashing": "all"
@@ -65,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "AdminProject:build:production"
+              "browserTarget": "Project:build:production"
             },
             "development": {
-              "browserTarget": "AdminProject:build:development"
+              "browserTarget": "Project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AdminProject:build"
+            "browserTarget": "Project:build"
           }
         },
         "test": {
@@ -92,7 +98,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -102,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": "9ce1522b-26fd-4cd8-9987-6df130fd7d50"
+    "analytics": "d49f8c87-5279-4fd2-a893-058de263f075"
   }
 }

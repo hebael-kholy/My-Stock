@@ -1,0 +1,79 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.about{
+    margin: 50px 0;
+}
+
+h2{
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 35px;
+}
+.aboutText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 18px;
+}
+
+.aboutImg{
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+@media (max-width: 910px) {
+    .aboutText{
+        gap: 25px;
+    }
+}
+.row-cards{
+    justify-content: space-between
+}
+.cards{
+    margin-top: 50px;
+}
+.card{
+    width: 30%;
+    text-align: center;
+    box-shadow: 3px 3px 12px 0px #dbd7d7;
+}
+div h3{
+    font-weight: 700;
+}
+div i{
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.features .special-heading {
+    color: #ebeceed6;
+    font-size: 95px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -3px;
+    margin: 0;
+  }
+  .special-heading + p {
+    text-align: center;
+    margin: 0;
+    margin-top: -35px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #686464;
+  }
+
+  @media (max-width: 767px) {
+    .features .special-heading {
+      font-size: 60px;
+    }
+    .special-heading + p {
+      margin-top: -20px;
+    }
+    .card{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .cards{
+        padding: 0 15px;
+    }
+  }

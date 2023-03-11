@@ -1,0 +1,261 @@
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+.profile{
+    display: flex;
+}
+.sideNavbar{
+    width: 22%;
+
+    height: 110vh;
+
+}
+.userImg img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.userImg{
+    width: fit-content;
+    margin: 0 auto;
+}
+.sideNavbar{
+    background-color: #c057f7;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+li{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 25px 0;
+    display: flex;
+    gap: 15px;
+    padding-left: 40px;
+}
+li:hover{
+    cursor: pointer;
+}
+
+.active{
+    border-left: 5px solid white;
+}
+.nav-settings{
+    display: flex;
+}
+
+/* end nav */
+
+/* responsive design */
+
+@media (max-width: 910px){
+      li{
+        font-size: 18px;
+        padding-left: 20px;
+      }
+      img{
+        width: 105px;
+        height: 105px;
+      }
+      .sideNavbar{
+        width: 42%;
+      }
+      /* .cardOrders{
+        gap: 20px;
+      }
+      .card{height: fit-content;} */
+}
+
+@media (max-width: 580px){
+    .sideNavbar{
+        height: fit-content;
+        width: 100%;
+    }
+    .nav-settings{
+        flex-direction: column;
+    }
+      li{
+        font-size: 19px;
+        padding-left: 35px;
+      }
+}
+
+
+/*nav orders*/
+
+.conter{
+    width: 78%;
+}
+.orderNav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 50px 60px;
+    flex-wrap: wrap;
+    height: 150px;
+    align-items: center;
+}
+.title{
+    color:#c057f7;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+select{
+    background-color: white;
+width: 170px;
+text-align: center;
+border-radius: 5px;
+border-color: #c057f7;
+font-weight: 600;
+padding: 3px 0;
+font-size: 16px;
+letter-spacing: 1px;
+}
+input[type="search"]{
+    border-color: #c057f7;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+.tableRow{
+    display: flex;
+    width: 100%;
+}
+.tableRow>div{
+    margin-left: 10px;
+    width: 33%;
+    padding: 0 10px;
+    font-weight: 600;
+}
+.tableRow div:not(:first-child){
+    text-align: center;
+}
+.tableRow div:first-child{
+    padding-left: 50px;
+}
+i.accepted{
+    color: #05d505;
+    font-size: 20px;
+}
+i.rejected{
+    color: #9c0303;
+    font-size: 20px;
+}
+i.pending{
+    font-size: 20px;
+}
+i.trash{
+    color: #9c0303;
+    font-size: 20px;
+    cursor: pointer; 
+}
+
+.total{
+    display: flex;
+    width: 40%;
+}
+.total>div{
+    width: 30%;
+    text-align: center;
+    font-weight: 600;
+}
+.oneRow{
+    display: flex;
+    align-items: center;
+}
+.rowOne{
+    width: 60%;
+}
+.navOrder{
+    width: 100%;
+    display: flex;
+    padding: 5px 0px;
+}
+.item>div{
+    width: 33%;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 18px;
+}
+.item{
+    display:flex;
+    width: 60%;
+    gap: 16px;
+}
+.items{
+    display:flex;
+    width: 40%;
+}
+.items>div{
+    width: 30%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+div.trash{
+    width: fit-content;
+}
+.emptyOrders{
+    width: fit-content;
+    margin: 50px auto;
+}
+.emptyOrders img{
+    width: 300px;
+}
+.emptyOrders div{
+    text-align: center;
+font-weight: 700;
+font-size: 25px;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+pagination-controls{
+    position: absolute;
+    right: 7%;
+    margin-top: 10px;
+  }
+  pagination-controls /deep/ .ngx-pagination .current{
+    background: #c057f7;
+  }
+@media (max-width: 580px){
+    .title{
+        font-size: 18px;
+    }
+    .tableRow div:first-child{
+        padding-left: 0px;
+    }
+    .total>div{
+        width: -1%;
+    }
+    .conter{
+        width: 100%;
+    }
+    .tableRow>div{
+        width: 25%;
+    }
+    i.accepted{
+        display: none;
+    }
+    .item>div{
+        font-size: 15px;
+    }
+    .items>div{
+        font-size:15px;
+        width: 50%;
+    }
+    .orderNav{
+        padding: 30px 35px;
+    }
+    input[type="search"]{
+        margin-bottom: 10px;
+    }
+    .items div:last-child{
+        display: none;
+    }
+}

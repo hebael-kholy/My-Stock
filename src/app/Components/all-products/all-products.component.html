@@ -1,0 +1,88 @@
+
+<!-- Collection -->
+
+<section id="collection" class="py-5">
+
+
+  <div class="col-md-4 mb-3 ms-auto">
+    <div class="input-group position-relative">
+      <input class="form-control py-2 rounded-pill mr-1 pr-5" type="search" placeholder="Search Products..."
+        id="example-search-input" [(ngModel)]="searchKey">
+      <span class="input-group-append" style="margin-left: 0;">
+        <button class="btn rounded-pill border-0 ml-n5 position-absolute" type="button"
+          style="right: 1px; top: 3px; background-color: #eee;">
+          <i class="bi bi-search"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+  <div class="container" id="tab">
+
+    <div class="title text-center">
+      <h2 class="position-relative d-inline-block text-capitalize">new collection</h2>
+    </div>
+    <ul class=" nav nav-tabs d-flex justify-content-center border-0 collection-tabs">
+      <li class=" nav-item">
+
+        <a class="btn m-3 active" (click)="filter('')" data-bs-toggle="tab">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" (click)="filter('Candles')" data-bs-toggle="tab">Candles</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" (click)="filter('Bags')" data-bs-toggle="tab">Bags</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" (click)="filter('Accessories')" data-bs-toggle="tab">Accessories</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn m-3" (click)="filter('Wooden')" data-bs-toggle="tab">Wooden Products</a>
+
+      </li>
+    </ul>
+    <div class="text-center">
+      <img *ngIf="isLoading" src="assets/Spinner-1s-200px.svg" alt="">
+    </div>
+
+    <div class="tab-content">
+      <div class="text-center ">
+        <div class="row mt-3">
+          <div class="col-lg-3 col-md-6 col-sm-12 mb-3 mt-3" *ngFor="let product of filterCategory  | filter :searchKey: 'title' | paginate:{ id:'list_pagination',
+            itemsPerPage:10 ,currentPage: page, totalItems: totalRecords}">
+            <div class="card" style="width:100%;" (mouseover)="showButton = true" (mouseleave)="showButton = false">
+              <div class="imageselect add-clearfix image-imagebox">
+                <article class="imagebox">
+                  <figure> <a routerLink="/products/{{product._id}}"><img class="card-img-top" src="{{product.image}}"
+                        alt="Card image cap">
+                      <figcaption *ngIf="showButton"> <span class="info">
+                        </span>
+                        <h4 class="caption-title" (click)="onclick()">Details</h4>
+                      </figcaption>
+                    </a>
+                  </figure>
+                </article>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <span class="fw-bold"> {{product.price}} EGP</span>
+                <div class="text-center overlay" (click)="clickk()" *ngIf="isLoadingg">
+                  <img src="{{product.image}}" alt="Card image cap">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="text-center">
+      <pagination-controls id="list_pagination" (pageChange)="page = $event" previousLabel="&lsaquo;"
+        nextLabel="&rsaquo;" class="my-pagination"></pagination-controls>
+    </div>
+
+
+  </div>
+</section>

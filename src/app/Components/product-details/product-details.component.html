@@ -1,0 +1,129 @@
+<div class="container mt-5 mb-5">
+  <div class="text-center" style="margin:auto; transform: translate(-50%,-50%); left:50%; top:50%; position: absolute;">
+    <img *ngIf = "isloading" src="assets/Spinner-1s-200px.svg" alt="">
+  </div>
+  <div class="card" *ngIf = "!isloading" >
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image">
+            <img src="{{productt.image}}" id="main_product_image" width="350">
+          </div>
+          <div class="thumbnail_images">
+            <ul id="thumbnail">
+              <li><img src="{{productt.image}}" width="70"></li>
+              <li><img src="{{productt.image}}" width="70"></li>
+              <li><img src="{{productt.image}}" width="70"></li>
+              <li><img src="{{productt.image}}" width="70">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 right-side">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>{{productt.title}}</h3> <span *ngIf="!addedtowishlist" class="heart"><i (click)="AddToWishlist()"
+                class="fa fa-heart-o" aria-hidden="true"></i> </span>
+            <span *ngIf="addedtowishlist" class="heart"> <fa-icon [icon]="icon2"></fa-icon></span>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p>{{productt.description}}</p>
+            <span class="fw-bold">Category : </span><span
+              class="text-capitalize my-1">{{productt.category.name}}</span>
+          </div>
+          <div class="fw-bold mt-2">
+            <h3>{{productt.price}} EGP</h3>
+          </div>
+          <div class="rating  mt-2">
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+
+          </div>
+          <div class="mt-3">
+            <span class="fw-bold">Color</span>
+            <div class="colors">
+              <ul id="marker">
+                <li id="marker-1"></li>
+                <li id="marker-2"></li>
+                <li id="marker-3"></li>
+                <li id="marker-4"></li>
+                <li id="marker-5"></li>
+              </ul>
+            </div>
+          </div>
+          <div class="buttons d-flex flex-row mt-5 gap-3">
+            <!-- <button class=" btn btn-outline-dark text-uppercase">Buy Now</button> -->
+
+            <span class="btn-addcart">
+              <button class="btn text-uppercase " (click)="add()"><fa-icon [icon]="iconCart"></fa-icon> Add to
+                Cart</button>
+            </span>
+          </div>
+<br><br>
+          <div mt-3>
+
+            <h4>Comments</h4>
+            
+            <div *ngFor="let commentt of comments">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src={{commentt.user.image}} alt="user" width="40"
+                      height="45" />
+                    <div class="w-100">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="text-primary fw-bold mb-0">
+                          {{commentt.user.name}}
+                          <span class="text-dark ms-2">{{commentt.title}}</span>
+                        </h6>
+
+                        <p *ngIf = "image == commentt.user.image"class="mb-0">2 seconds ago</p>
+                        <p *ngIf = "image != commentt.user.image"class="mb-0">2 days ago</p>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <p class="small mb-0" style="color: #aaa;">
+                          <a *ngIf ="image === commentt.user.image" (click) = "DeleteReview(commentt)" style="cursor: pointer;" class="link-grey">Remove</a> •
+                          <a  class="link-grey">Reply</a> •
+                          <a  class="link-grey">Translate</a>
+
+                         
+                        </p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="comment">
+            <img src="{{image}}" alt="user" width="40" height="45" class="user-image mt-0">
+            <!-- <textarea class="ms-3 mt-3" [(ngModel)] = "comment"></textarea>&nbsp;&nbsp; -->
+   <textarea class="form-control rounded-pill position-relative mr-1 pr-5" placeholder="Write your Comment..." id="example-search-input"  [(ngModel)] = "comment" style="background-color: #eee;"></textarea>
+                   <span class="input-group-append">
+                    <button (click) = "AddReview()" class="btn-arrow btn rounded-pill border-0 ml-n5 position-absolute"  type="button" >
+                      <i class="bi bi-arrow-right-circle-fill"></i>
+                    </button>
+                </span>
+           
+          
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+
+<nav class="navbar navbar-expand-lg nav-menu">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="#"><img src="../../../assets/logoooo.jpeg" width="60">
+      <!-- <span
+        class="logo-info"> CRAFTS</span> -->
+      </a>
+
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+        <li class="nav-item m-3 active">
+          <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li class="nav-item m-3">
+          <a class="nav-link rounded" routerLink="/about" routerLinkActive="active">About</a>
+        </li>
+        <li class="nav-item m-3">
+          <a class="nav-link rounded" routerLink="/profile" routerLinkActive="active">Profile</a>
+        </li>
+        <li class="nav-item m-3">
+          <a class="nav-link rounded" routerLink="/products" routerLinkActive="active">Products</a>
+        </li>
+
+
+        <li class="nav-item m-3" *ngIf="authService.isAuthenticated || authService.checkLoginStatus()">
+          <a class="nav-link rounded position-relative excluded" routerLink="/getCart"
+            routerLinkActive="active"><fa-icon [icon]="icon"></fa-icon>Cart
+            <span class="position-absolute top-0 start-100 translate-middle badge">{{cartitems?cartitems:0}}</span>
+          </a>
+        </li>
+        <li class="nav-item m-3" *ngIf="authService.isAuthenticated || authService.checkLoginStatus()">
+          <a class="nav-link rounded position-relative excluded" routerLink="/getWishlist" routerLinkActive="active">
+            <fa-icon [icon]="icon2"></fa-icon>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge">{{wishlistitems?wishlistitems:0}}</span>
+          </a>
+        </li>
+        <li class="nav-item m-3" *ngIf="!authService.isAuthenticated && !authService.checkLoginStatus()">
+          <a class="nav-link btn rounded border text-light excluded" routerLink="/login"
+            routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item m-3" *ngIf="!authService.isAuthenticated && !authService.checkLoginStatus()">
+          <a class="nav-link btn rounded border text-light excluded" routerLink="/register"
+            routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item m-3" *ngIf="authService.isAuthenticated || authService.checkLoginStatus()">
+
+          <div>
+            <button [matMenuTriggerFor]="menu" class="border-0 btn excluded bg-light p-0 m-0">
+              <img src="{{image}}" alt="user" width="40" height="45" class="user-image">
+              <span style="text-transform: capitalize;">&nbsp;&nbsp;{{username}}</span>
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="logOut()">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

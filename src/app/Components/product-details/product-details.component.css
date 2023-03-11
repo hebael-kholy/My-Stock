@@ -1,0 +1,274 @@
+body {
+  background-color: #ecedee;
+}
+
+.card {
+  border: none;
+  overflow: hidden;
+}
+
+.thumbnail_images ul {
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  background-color: ghostwhite;
+}
+
+.thumbnail_images ul li {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: ghostwhite;
+}
+
+.thumbnail_images ul li:hover {
+  border-color: #c057f7;
+}
+
+.main_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  background-color: ghostwhite;
+}
+
+.heart {
+  height: 29px;
+  width: 29px;
+  background-color: #eaeaea !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content p {
+  font-size: 12px;
+}
+
+.ratings span {
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+.colors {
+  margin-top: 5px;
+}
+
+.colors ul {
+  list-style: none;
+  display: flex;
+  padding-left: 0px;
+}
+
+.colors ul li {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.colors ul li:nth-child(1) {
+  background-color: #6c704d;
+}
+
+.colors ul li:nth-child(2) {
+  background-color: #96918b;
+}
+
+.colors ul li:nth-child(3) {
+  background-color: #68778e;
+}
+
+.colors ul li:nth-child(4) {
+  background-color: #263f55;
+}
+
+.colors ul li:nth-child(5) {
+  background-color: black;
+}
+
+.right-side {
+  position: relative;
+}
+
+.buttons .btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 0px !important;
+}
+
+.text-primary {
+  color: #c057f7 !important;
+}
+.btn-addcart .btn {
+  border-color: #c057f7;
+  color: #c057f7;
+  padding: 10px 0px;
+}
+.btn-addcart .btn:hover {
+  background-color: #c057f7;
+  color: white;
+}
+
+.btn-addcart .btn:active {
+  background-color: #c057f7;
+  color: white;
+}
+.btn-outline-dark {
+  background-color: #c057f7;
+  color: white;
+  border-color: #c057f7;
+}
+
+.btn-outline-dark:hover {
+  background-color: white !important;
+  color: #c057f7;
+}
+
+.heart i .fafa-heart-o:hover{
+  color: black;
+  /* background-color: black; */
+
+
+}
+
+.user-image {
+  border-radius: 50%;
+  position: relative;
+  bottom:-15px;
+}
+
+input{
+  position: relative;
+  left: 50px;
+  bottom: 25px;
+}
+
+.form-control{
+  width:90%;
+}
+
+.user-image2{
+  border-radius: 50%;
+  position: relative;
+  bottom: 2px;
+
+}
+
+.delete{
+  position: relative;
+    bottom: 0px;
+    right: -19px;
+}
+
+body {
+  background-color: #f7f6f6
+}
+
+.card {
+  
+  border: none;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  border-radius: 4px;
+}
+
+
+.dots{
+
+  height: 4px;
+width: 4px;
+margin-bottom: 2px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+}
+
+.badge{
+
+      padding: 7px;
+      padding-right: 9px;
+  padding-left: 16px;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.user-img{
+
+  margin-top: 4px;
+}
+
+.check-icon{
+
+  font-size: 17px;
+  color: #c3bfbf;
+  top: 1px;
+  position: relative;
+  margin-left: 3px;
+}
+
+.form-check-input{
+  margin-top: 6px;
+  margin-left: -24px !important;
+  cursor: pointer;
+}
+
+
+.form-check-input:focus{
+  box-shadow: none;
+}
+
+
+.icons i{
+
+  margin-left: 8px;
+}
+.reply{
+
+  margin-left: 12px;
+}
+
+.reply small{
+
+  color: #b7b4b4;
+
+}
+
+
+.reply small:hover{
+
+  color: green;
+  cursor: pointer;
+
+}
+.btn-arrow{
+  right: 9px;
+  bottom: 30px;
+
+  font-size: 34px;
+  color: darkorchid;
+}
+
+.name{
+  font-weight: bold;
+}
+.link-grey { color: #aaa; text-decoration: none; } .link-grey:hover { color: #00913b; }
+
+textarea{
+  
+  height: 10px;
+  left: 49px;
+  bottom: 25px;
+  resize: none;
+
+}
+

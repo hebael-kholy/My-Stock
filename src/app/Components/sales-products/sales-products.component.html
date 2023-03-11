@@ -1,0 +1,44 @@
+<!-- Carousel Products -->
+<ng-container id="carouselProducts">
+  <div class="container text-center mb-4 mt-4">
+    <div class="title text-center pt-3 pb-3 mt-3">
+      <h2 class="position-relative d-inline-block ms-4">
+        Sales Products
+      </h2>
+    </div>
+    <div class="text-center">
+      <img *ngIf="isLoading" src="assets/Spinner-1s-200px.svg" alt="">
+    </div>
+    <owl-carousel-o [options]="customOptions">
+
+      <ng-template carouselSlide *ngFor="let product of productsWithSale">
+
+        <div class="row">
+
+          <div class="col m-3">
+            <div class="collection-img position-relative overflow-hidden">
+              <img src={{product.image}} alt="" width="200" height="320" class="w-100">
+              <span class="position-absolute d-flex justify-content-center align-items-center bg-primary">sale</span>
+            </div>
+            <div class="text-center">
+              <div class="rating mt-3">
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+
+
+              </div>
+              <p class="text-capitalize my-1">{{product.title}}</p>
+              <span class="fw-bold">{{product.price}} EGP</span>
+              <div class="btn-addcart">
+                <a routerLink="/products/{{product._id}}"  class="btn text-uppercase mt-3">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</ng-container>

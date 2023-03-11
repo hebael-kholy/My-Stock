@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="text-center overlay" *ngIf="isLoading">
+    <img src="../../../assets/Spinner-1s-200px (3).svg" alt="">
+  </div>
+  <div class="wrapper vh-75 mt-3">
+    <div class="row align-items-center h-100">
+      <div class="col-lg-4 offset-lg-4">
+        <div class="mx-auto" style="width: 400px">
+          <div class="card p-4">
+            <div class="d-flex justify-content-center">
+              <div class="icon-block">
+                <img src="https://img.icons8.com/ios/50/2E9AFE/lock-2.png"/>
+              </div>
+            </div>
+            <div class="text-center my-4">
+              <h2 class="fw-bold">Verify Your Code</h2>
+              <div class="text-muted">Enter 6-digit code from yout two factor authentication APP.</div>
+            </div>
+            <div class="my-4">
+              <ng-otp-input  #ngOtpInput (onInputChange)="onOtpChange($event)"  [config]="configOptions" allowKeyCodes ></ng-otp-input>
+            </div>
+            <button class="btn btn-lg w-100 mt-3 mb-4 py-3" [ngClass]="btnStatus" (click)="verify()">{{ this.inputDigitLeft }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

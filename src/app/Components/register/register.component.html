@@ -1,0 +1,90 @@
+
+<section class="vh-50 p-5">
+
+  <div class="text-center overlay" *ngIf="isLoading">
+    <img src="../../../assets/Spinner-1s-200px (3).svg" alt="">
+  </div>
+  <div class="container-fluid h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="text-black">
+          <div class="card-body">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <form class="mx-1 mx-md-4" [formGroup]="userForm" (ngSubmit)="onSubmit()" #form="ngForm">
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your Name</label>
+                      <input type="text" id="form3Example1c" class="form-control" name="name" formControlName="name"
+                        [(ngModel)]="user.name" />
+                      <span class="alert text-danger"
+                        *ngIf="userForm.controls['name'].dirty && userForm.hasError('required','name')">* Name is
+                        required</span>
+                      <span class="alert text-danger" *ngIf="userForm.controls['name'].hasError('minlength')">* Name
+                        Should not be less than 3 characters</span>
+                    </div>
+
+                  </div>
+                  <div class="d-flex flex-row align-items-center mb-4" style="position: relative;">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4c">Password</label>
+                      <input [type]="changetype?'password':'text'" id="form3Example4c" class="form-control" #password
+                        formControlName="password" [(ngModel)]="user.password" />
+                      <span (click)="viewpass()">
+                        <i [ngClass]="!visible?'bi bi-eye':'bi bi-eye-slash'"></i>
+                      </span>
+                      <span class="alert text-danger"
+                        *ngIf="userForm.controls['password'].dirty && userForm.hasError('required','password')">*
+                        password is required</span>
+                      <span class="alert text-danger ms-3" *ngIf="userForm.controls['password'].hasError('minlength')">*
+                        password Should not be less than 3 characters</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                      <input type="email" id="form3Example3c" class="form-control" #email formControlName="email"
+                        [(ngModel)]="user.email" />
+                      <span class="alert text-danger"
+                        *ngIf="userForm.controls['email'].dirty && userForm.hasError('required','email')">* Email is
+                        required</span>
+                      <span class="alert text-danger ms-3" *ngIf="userForm.controls['email'].hasError('pattern')">*
+                        Email should be name@example.com</span>
+                    </div>
+                  </div>
+
+
+                  <div class="d-flex flex-row mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label for="" class="mb-3" id="gr">Gender</label><br>
+
+                      <input class="gen form-check-input me-2" type="radio" name="gender" id="flexRadioDefault1"
+                        value="male" formControlName="gender" [(ngModel)]="user.gender"><label>Male</label>
+                      <input class="gen form-check-input ms-5 me-2" type="radio" name="gender" id="flexRadioDefault1=2"
+                        value="female" formControlName="gender" [(ngModel)]="user.gender"><label>Female</label>
+
+                    </div>
+                  </div>
+                  <div class="mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-lg" [disabled]="form.invalid">Register</button>
+
+                    <!-- <button type="button" class="btn btn-lg" (click)="Add(name.value,email.value,password.value,gender.value)">Register</button> -->
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Do you have an account? <a routerLink="/login"
+                        class="log">Login</a></p>
+                  </div>
+
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,195 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+.profile {
+  display: flex;
+}
+.sideNavbar {
+  width: 22%;
+  height: 100vh;
+}
+.userImg img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+.userImg {
+  width: fit-content;
+  margin: 0 auto;
+}
+.sideNavbar {
+  background-color: #c057f7;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30px;
+}
+li {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 25px 0;
+  display: flex;
+  gap: 15px;
+  padding-left: 40px;
+}
+li:hover {
+  cursor: pointer;
+}
+
+.active {
+  border-left: 5px solid white;
+}
+.nav-settings {
+  display: flex;
+
+}
+
+/* end nav */
+/* profile info */
+
+
+.information {
+  padding: 50px 100px;
+  width: 78%;
+}
+h2 {
+  color: #c057f7;
+  font-weight: 700;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+.changePic {
+  color: black;
+  display: block;
+}
+
+input[type="submit"] {
+  background-color: #c057f7;
+  padding: 10px;
+  font-weight: 700;
+  color: white;
+  display: block;
+  border-radius: 20px;
+  border: none;
+  position: absolute;
+  right: 100px;
+  margin-top: 60px;
+  letter-spacing: 1px;
+}
+
+input[type="button"]:hover {
+  background-color: #c482e7;
+}
+table {
+  width: 100%;
+}
+.editInput {
+  width: 95%;
+  padding: 0 5px;
+}
+.editInput:focus {
+  border-color: #c057f7;
+  outline: none;
+}
+.editIcon {
+  text-align: center;
+  padding-bottom: 5px;
+  display: flex;
+}
+.editIcon i:hover {
+  color: #c057f7;
+}
+.editIcon:hover {
+  cursor: pointer;
+}
+.data {
+  letter-spacing: 1px;
+}
+
+th {
+  padding: 12px 10px;
+  width: 20%;
+}
+
+.alert-danger {
+  height: 29px;
+  padding: 0 9px;
+  width: 95%;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+select {
+  width: 95%;
+  border-radius: 3px;
+  background-color: white;
+  padding: 0px;
+}
+input[type="file"] {
+  display: none;
+}
+.change-pic {
+  display: inline-block;
+  cursor: pointer;
+}
+.cameraIcon {
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.uploadIcon {
+  position: absolute;
+  font-size: 22px;
+  top: 0;
+  cursor: pointer;
+}
+.btnUpload i:hover {
+  color: #c057f7;
+
+}
+
+/* responsive design */
+
+@media (max-width: 910px) {
+  .information {
+    padding: 50px 50px;
+  }
+  li {
+    font-size: 18px;
+    padding-left: 20px;
+  }
+  img {
+    width: 105px;
+    height: 105px;
+  }
+  input[type="button"] {
+    right: 60px;
+  }
+}
+
+@media (max-width: 580px) {
+  .sideNavbar {
+    height: fit-content;
+    width: 100%;
+  }
+  .nav-settings {
+    flex-direction: column;
+  }
+  .information {
+    padding: 50px 20px;
+    width: 100%;
+  }
+
+  input[type="button"] {
+    right: 25px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+}
+

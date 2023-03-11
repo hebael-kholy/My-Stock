@@ -1,0 +1,88 @@
+/* body{
+  background-color:red
+}
+.height-100{
+  height:100vh
+}
+.card{
+  width:400px;
+  border:none;
+  height:300px;
+  box-shadow: 0px 5px 20px 0px #d2dae3;
+  z-index:1;display:flex;justify-content:center;align-items:center}.card h6{color:red;font-size:20px}.inputs input{width:40px;height:40px}input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button{-webkit-appearance: none;-moz-appearance: none;appearance: none;margin: 0}.card-2{background-color:#fff;padding:10px;width:350px;height:100px;bottom:-50px;left:20px;position:absolute;border-radius:5px}.card-2 .content{margin-top:50px}.card-2 .content a{color:red}.form-control:focus{box-shadow:none;border:2px solid red}.validate{border-radius:20px;height:40px;background-color:red;border:1px solid red;width:140px} */
+
+.icon-block {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  background-color: #fad8edd2;
+}
+img {
+  height: auto;
+  margin: auto;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px 20px -3px #fad8edd2;
+}
+
+.digit-otp {
+  height: 60px !important;
+  border-radius: 8px !important;
+  color: #b744f6;
+
+  /* &::placeholder {
+            color: ##b744f6; */
+}
+
+/* &:focus {
+            outline-color: ##b744f6;
+            border-color: ##b744f6; */
+
+.ng-touched {
+  border: 2px solid #b744f6 !important;
+}
+
+.btn-light {
+  background-color: #eee !important;
+  border-color: #eee !important;
+  border-radius: 13px !important;
+}
+
+.btn-primary {
+  background-color: #b744f6 !important;
+  border-color: #b744f6 !important;
+  border-radius: 13px !important;
+}
+.overlay{
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.overlay img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+.btnColor{
+  background-color: #b744f6;
+}

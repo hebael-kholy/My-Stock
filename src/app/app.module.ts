@@ -1,89 +1,75 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSortModule } from '@angular/material/sort';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './Components/home/home.component';
-import { LoginComponent } from './Components/login/login.component';
-import { SidebarComponent } from './Components/sidebar/sidebar.component';
-import { ProductsComponent } from './Components/products/products.component';
-import { OrdersComponent } from './Components/orders/orders.component';
-import { CategoriesComponent } from './Components/categories/categories.component';
-import { SettingsComponent } from './Components/settings/settings.component';
-import { AddProductDialogComponent } from './Components/add-product-dialog/add-product-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSelectModule } from '@angular/material/select';
-
-import { LayoutModule } from '@angular/cdk/layout';
-import { EditProductComponent } from './Components/edit-product/edit-product.component';
-import { AddCategoryDialogComponent } from './Components/add-category-dialog/add-category-dialog.component';
-import { EditCategoryDialogComponent } from './Components/edit-category-dialog/edit-category-dialog.component';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { HomeComponent } from './Components/home/home.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { ErrorComponent } from './Components/error/error.component';
+import { AboutComponent } from './Components/about/about.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { HttpClientModule } from '@angular/common/http';
+import { AllProductsComponent } from './Components/all-products/all-products.component';
+import { SalesProductsComponent } from './Components/sales-products/sales-products.component';
+import { SideOrderComponent } from './Components/side-order/side-order.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { CartComponent } from './Components/cart/cart.component';
 import { FilterPipe } from './Pipes/filter.pipe';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { CouponsComponent } from './Components/coupons/coupons.component';
-import { AddCouponDialogComponent } from './Components/add-coupon-dialog/add-coupon-dialog.component';
-import { EditCouponDialogComponent } from './Components/edit-coupon-dialog/edit-coupon-dialog.component';
+import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { VerifyCodeComponent } from './Components/verify-code/verify-code.component';
+import { NgOtpInputModule } from 'ng-otp-input';
+import { NewPasswordComponent } from './Components/new-password/new-password.component';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     HomeComponent,
+    ProfileComponent,
     LoginComponent,
-    SidebarComponent,
-    ProductsComponent,
-    OrdersComponent,
-    CategoriesComponent,
-    SettingsComponent,
-    AddProductDialogComponent,
-    EditProductComponent,
-    AddCategoryDialogComponent,
-    EditCategoryDialogComponent,
+    RegisterComponent,
+    ErrorComponent,
+    AboutComponent,
+    AllProductsComponent,
+    SalesProductsComponent,
+    SideOrderComponent,
+    ProductDetailsComponent,
+    CartComponent,
     FilterPipe,
-    DashboardComponent,
-    CouponsComponent,
-    AddCouponDialogComponent,
-    EditCouponDialogComponent,
+    WishlistComponent,
+    ResetPasswordComponent,
+    VerifyCodeComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
+    CarouselModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
+    NgxPaginationModule,
     MatMenuModule,
-    MatListModule,
-    MatCardModule,
-    MatInputModule,
-    MatTableModule,
     MatDialogModule,
-    MatSelectModule,
-    LayoutModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSortModule,
+    NgOtpInputModule,
+    MatButtonModule,
+    MatIconModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,31 @@
+
+.icon-hover-primary:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
+}
+
+.icon-hover-primary:hover i {
+  color: #3b71ca !important;
+}
+.icon-hover-danger:hover {
+  border-color: #dc4c64 !important;
+  background-color: white !important;
+}
+
+.icon-hover-danger:hover i {
+  color: #dc4c64 !important;
+}
+
+h6{
+  margin-top: 6px;
+}
+.w-100 {
+  width: 100%!important;
+  background-color: #c057f7 !important;
+  border: #c057f7;
+  color: white;
+}
+section{
+  background-color: floralwhite;
+}
+

@@ -1,0 +1,135 @@
+<div class="nav-settings">
+
+  <div class="sideNavbar">
+    <div class="userImg">
+      <img src="{{imagePath}}" alt="user">
+    </div>
+    <ul>
+      <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded"
+          routerLink="/profile">Settings</a></li>
+      <li routerLinkActive="active"><span><i class="bi bi-cart-check-fill"></i></span><a class="nav-link rounded"
+          routerLink="/profile/orders">My Orders</a></li>
+    </ul>
+  </div>
+  <div class="information">
+    <h2>Your account settings</h2>
+    <form action="" [formGroup]="form">
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>
+            <div *ngIf="isEditName">
+              <input type="text" class="editInput" [(ngModel)]="username" formControlName="username">
+              <div class="alert alert-danger" role="alert" *ngIf="!NameValid">y
+                <div>
+                  {{nameError}}
+                </div>
+                <div>
+                  <i class="bi bi-exclamation-circle"></i>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!isEditName" class="data">
+              {{username}}
+            </div>
+          </td>
+          <td class="editIcon">
+            <i class="bi bi-pencil-fill" (click)="EditName(username)"></i>
+          </td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>
+            <div *ngIf="isEditMail">
+              <input type="text" class="editInput" [(ngModel)]="mail" formControlName="email" id="name">
+              <div class="alert alert-danger" role="alert" *ngIf="!mailValid">
+                <div>
+                  {{mailError}}
+                </div>
+                <div>
+                  <i class="bi bi-exclamation-circle"></i>
+                </div>
+              </div>
+
+            </div>
+            <div *ngIf="!isEditMail" class="data">
+              {{mail}}
+            </div>
+          </td>
+          <td class="editIcon">
+            <i class="bi bi-pencil-fill" (click)="EditMail(mail)"></i>
+          </td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td>
+            <div *ngIf="isEditPassword" class="d-flex">
+              <input type="password" class="editInput" [(ngModel)]="password" #pass placeholder="change password"
+                formControlName="password" [type]="hide? 'password':'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                [attr.aria-pressed]="hide" class="eyeBtn">
+                <mat-icon>{{hide? 'visibility_off': 'visibility'}}</mat-icon>
+              </button>
+              <!-- <div class="alert alert-danger" role="alert" *ngIf="!mailValid" >
+>>>>>>> a2ace9e0ff18a4f88d92bc3dc2b08077842a40bd
+                            <div>
+                                {{mailError}}
+                            </div>
+                            <div>
+                                <i class="bi bi-exclamation-circle"></i>
+                            </div>
+                          </div> -->
+
+            </div>
+            <div *ngIf="!isEditPassword" class="data">
+              **********
+            </div>
+          </td>
+          <td class="editIcon">
+            <i class="bi bi-pencil-fill" (click)="EditPassword()"></i>
+          </td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td>
+            <div *ngIf="isEditGender" class="data">
+              <select #gender id="select_box" (change)="onSelected(gender.value)">
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+              </select>
+            </div>
+            <div *ngIf="!isEditGender" class="data">
+              {{gender}}
+            </div>
+
+          </td>
+          <td class="editIcon">
+            <i class="bi bi-pencil-fill" (click)="EditGender()"></i>
+          </td>
+        </tr>
+        <tr>
+          <th>Change Picture</th>
+          <td>
+            <label class="change-pic">
+              <i class="fa fa-2x fa-camera cameraIcon"></i>
+              <span class="textimg">{{imgText}}</span>
+              <input type="file" id="file" class="fileControlInput" multiple="multiple" accept=".png,.jpg,.jpge/*"
+                (change)="handleFileInput($event)" />
+            </label>
+          </td>
+          <td class="uploadCell" style="position: relative;">
+            <span class="btnUpload" (click)="Upload()">
+              <i class="bi bi-upload uploadIcon" title="Upload image"></i>
+            </span>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="Save settings" (click)="Update(username,mail,password,gender)">
+      <div class="text-center" *ngIf="isLoading">
+        <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,42 +1,41 @@
-<div class="container-fluid vh-100 pt-5">
-  <div class="row">
-    <div class="col">
-      <mat-card>
-        <mat-card-content>
-          <div class="header">
-            <h2>ADMIN LOGIN</h2>
+<section class="vh-70 mt-5">
+  <div class="text-center overlay" *ngIf="isLoading">
+    <img src="../../../assets/Spinner-1s-200px (3).svg" alt="">
+  </div>
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+          alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form #frm="ngForm" [formGroup]="loginForm">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Email address</label>
+            <input type="email" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" #email [(ngModel)]="loginObj.email" formControlName="email" />
+            <span class="alert text-danger ms-3" *ngIf="loginForm.controls['email'].hasError('pattern')">* Email should
+              be name@example.com</span>
           </div>
-          <div class="text-center overlay" *ngIf="isLoading">
-            <img src="assets/Spinner-1s-200px.svg" alt="">
+          <div class="form-outline mb-3" style="position: relative;">
+            <label class="form-label" for="form3Example4">Password</label>
+            <input [type]="changetype?'password':'text'" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Enter password" #password [(ngModel)]="loginObj.password" formControlName="password" />
+            <span (click)="viewpass()">
+              <i [ngClass]="!visible?'bi bi-eye':'bi bi-eye-slash'"></i>
+            </span>
+            <span class="alert text-danger ms-3" *ngIf="loginForm.controls['password'].hasError('minlength')">* Password
+              Should not be less than 3 characters</span>
           </div>
-          <form #signInForm="ngForm" (ngSubmit)="onSubmit(userEmail.value,userPassword.value)">
-            <div class="email-input">
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput required name="email" #userEmail>
-                <mat-error *ngIf="loginForm.get('email').errors?.required">
-                  Required Email Address
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div>
-              <a href="" class="aLink mb-2">Forgot Password?</a>
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Password</mat-label>
-                <input type="password" matInput [type]="hide? 'password':'text'" required name="password" #userPassword>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
-                  [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide? 'visibility_off': 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="loginForm.get('password').errors?.required">Required Password</mat-error>
-              </mat-form-field>
-            </div>
-            <button class="btn btn-primary border-0 full-width mt-3 mb-3" type="submit"
-              [disabled]="signInForm.invalid">Login</button>
-            <div *ngIf="errmsg" class="alert alert-danger full-width m-auto">{{errmsg}}</div>
-          </form>
-        </mat-card-content>
-      </mat-card>
+          <a routerLink="/resetPass" class="d-flex justify-content-end" style="color: #b744f6;">Forget Password?</a>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"
+              (click)="onLogin()" [disabled]="frm.invalid">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a routerLink="/register"
+                class="reg">Register</a></p>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+</section>
