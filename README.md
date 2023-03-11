@@ -45,6 +45,7 @@ Admins can do the following:
 
 - live demo for user:   [https://lnkd.in/dxXHcuNx](https://lnkd.in/dxXHcuNx)
 - live demo for admin dashboard: [https://lnkd.in/dhTkKG-G](https://lnkd.in/dhTkKG-G)
+- to see video: [video](ttps://www.linkedin.com/posts/heba-el-said-594600246_angular-nodejs-iti-activity-7037485655827836928-n46b?utm_source=share&utm_medium=member_android)
 
 ## Authors
 
