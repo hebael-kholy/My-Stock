@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-between">
+  <button mat-raised-button color="primary" (click)="openModel()" class="mt-4 ms-5 p-4">+ Add New Product</button>
+  <mat-form-field class="me-5 mt-3" color="primary">
+    <mat-label>Search Table</mat-label>
+    <input matInput placeholder="Search ..." #input type="text" (keyup)="applyFilter($event)">
+  </mat-form-field>
+</div>
+<div class="main tableContainer mat-elevation-z8">
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Image
+      </th>
+      <td mat-cell *matCellDef="let element"><img src="{{element.image}}" width="100px" height="100px"
+          style="padding: 5px;"></td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Title
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+        Quantity
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+        Price
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+        Category
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+        Action
+      </th>
+      <td mat-cell *matCellDef="let element; let i=index">
+        <i class="bi bi-pen" color="primary" style="margin-right: 10px; color: blue;"
+          (click)="openEditModel(element)"></i>
+        <i class="bi bi-trash3" color="primary" style="margin-right: 10px; color: #e12727;"
+          (click)="deleteById(element._id)"></i>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        <span class="m-4">The filter doesn't match any product in the Table for this text {{input.value}}</span>
+      </td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[4, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+<div class="text-center mt-4" *ngIf="isLoading">
+  <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+</div>

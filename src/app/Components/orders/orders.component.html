@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-end">
+<mat-form-field appearance="fill" class="me-5 mt-3">
+<mat-select  (selectionChange)="onChange($event)" placeholder="Filter Depend on Status ...">
+  <mat-option value="All" selected>All</mat-option>
+  <mat-option value="accepted">accepted</mat-option>
+  <mat-option value="pending">pending</mat-option>
+  <mat-option value="rejected">rejected</mat-option>
+</mat-select>
+</mat-form-field>
+</div>
+
+<div class="mat-elevation-z8 tableContainer">
+  <table mat-table matSort [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> User Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Total Price </th>
+      <td mat-cell *matCellDef="let element"> ${{element.totalPrice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Cart items titles </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngFor="let order of element.cartItems; let i=index">
+          {{i+1}}.{{order.product.title}}
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef> Order Status </th>
+      <td mat-cell *matCellDef="let element">{{element.status}}</td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Change Status </th>
+      <td mat-cell *matCellDef="let element" style="width: 130px">
+        <button class="btn btn-danger border-0" *ngIf="element.status === 'pending'"
+          (click)="cancelOrder(element._id)"><i class="bi bi-x-circle-fill"></i></button>
+        <button class="btn btn-primary border-0 ms-3" *ngIf="element.status === 'pending'"
+          (click)="acceptOrder(element._id)"><i class="bi bi-check-circle-fill"></i></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[4,10,20]" showFirstLastButtons
+    class="d-flex align-items-center justify-content-center"></mat-paginator>
+</div>
+<div class="text-center mt-4" *ngIf="isLoading">
+  <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+</div>

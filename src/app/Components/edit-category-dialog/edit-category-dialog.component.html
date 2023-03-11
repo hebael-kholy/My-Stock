@@ -1,0 +1,23 @@
+<div class="p-5">
+  <h2 class="text-center mb-3 bg-light p-4 rounded-circle">Edit Category</h2>
+  <form [formGroup]="formValue" *ngIf="!isLoading">
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Category Name</label>
+      <input type="name" formControlName="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+    </div>
+    <br>
+    <div class="mb-3">
+      <div class="d-flex align-items-center justify-content-center">
+        <img [src]="url" alt="category.." width="200" (click)="openFile()">
+      </div>
+      <input type="file" class="form-control" id="exampleInputImage" (change)="uploadImgFile($event)" hidden>
+    </div>
+  </form>
+  <div class="text-center mt-4" *ngIf="isLoading">
+    <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+  </div>
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-warning w-50 mt-3 text-white" (click)="closeDialog()">Close</button>
+    <button type="button" class="btn btn-success w-50 ms-3 mt-3" (click)="EditCategory()">Edit</button>
+  </div>
+</div>

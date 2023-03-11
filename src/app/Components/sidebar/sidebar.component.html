@@ -1,0 +1,46 @@
+<mat-nav-list class="navList">
+  <div class="logo py-4 text-center ms-3">
+    <img src="{{image}}" alt="" width="150" height="150" *ngIf="isLoading == 'false'">
+    <img src="assets/Spinner-1s-200px(lighter).svg" alt="user" width="150" height="150" class="p-2"
+      *ngIf="isLoading == 'true'">
+  </div>
+  <h2 class="text-center text-white text-capitalize ms-3">{{username}}</h2>
+  <h3 class="text-center text-white ms-4">{{useremail}}</h3>
+  <mat-divider class="mb-4 ms-3"></mat-divider>
+  <mat-list-item [routerLink]="['/home/dashboard']" routerLinkActive="list-item-active">
+    <button mat-button>
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/home/products']" routerLinkActive="list-item-active">
+    <button mat-button>
+      <i class="bi bi-box-fill"></i>
+      <span>Products</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/home/orders']" routerLinkActive="list-item-active">
+    <button mat-button>
+      <i class="bi bi-clipboard2-check-fill"></i>
+      <span>Orders</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/home/coupons']" routerLinkActive="list-item-active">
+    <button mat-button>
+      <i class="bi bi-ticket-perforated-fill"></i>
+      <span>Coupons</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/home/categories']" routerLinkActive="list-item-active">
+    <button mat-button>
+      <mat-icon>category</mat-icon>
+      <span>Categories</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/home/settings']" routerLinkActive="list-item-active">
+    <button mat-button>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

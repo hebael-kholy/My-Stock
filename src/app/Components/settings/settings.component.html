@@ -1,0 +1,39 @@
+<div class="container p-5 me-4">
+  <h2 class="m-auto bg-light rounded border w-25 text-center p-4 rounded-circle">Change Your Info</h2>
+  <form [formGroup]=" formValue">
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Name</label>
+      <input type="name" formControlName="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp"
+        [(ngModel)]="username">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail" class="form-label">Email</label>
+      <input type="email" formControlName="email" class="form-control" id="exampleInputEmail"
+        aria-describedby="emailHelp" [(ngModel)]="email">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPass" class="form-label">Password</label>
+      <input type="password" formControlName="password" class="form-control" id="exampleInputPass"
+        aria-describedby="passHelp" [(ngModel)]="password" placeholder="*******" [type]="hide? 'password':'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+        [attr.aria-pressed]="hide" class="eyeBtn">
+        <mat-icon>{{hide? 'visibility_off': 'visibility'}}</mat-icon>
+      </button>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputImage"></label>
+      <div class="d-flex box">
+        <img src="{{urlImg}}" alt="admin image" (click)="openFile()">
+        <div class="inputFile d-flex justify-content-center align-items-center">
+          <input type="file" class="form-control" id="exampleInputImage" (change)="uploadImgFile($event)" hidden>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="saveBtn btn btn-primary border-0" (click)="updateData()">Save Changes</button>
+    </div>
+    <div class="text-center mt-4 overlay" *ngIf="isLoading">
+      <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+    </div>
+  </form>
+</div>

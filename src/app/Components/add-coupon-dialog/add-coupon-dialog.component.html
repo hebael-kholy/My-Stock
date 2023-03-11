@@ -1,0 +1,35 @@
+<div class="container p-5">
+  <h2 class="text-center mb-3 bg-light p-4 rounded-circle">Add New Coupon</h2>
+  <form [formGroup]="formValue" *ngIf="!isLoading">
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Name</label>
+      <input type="name" formControlName="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp"
+        placeholder="Enter Name">
+      <small *ngIf="formValue.get('name')?.invalid" class="text-danger">Name is
+        required</small>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="exampleInputExpire" class="form-label">Expire Date</label>
+      <input type="date" formControlName="expire" class="form-control" id="exampleInputExpire"
+        aria-describedby="expireHelp" placeholder="Enter Expire Date">
+      <small *ngIf="formValue.get('expire')?.invalid" class="text-danger">Expire Date is
+        required</small>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputDiscount" class="form-label">Discount</label>
+      <input type="number" formControlName="discount" class="form-control" id="exampleInputDiscount"
+        aria-describedby="discountHelp" placeholder="Enter Discount %">
+      <small *ngIf="formValue.get('discount')?.invalid" class="text-danger">Discount Percentage is
+        required</small>
+    </div>
+  </form>
+  <div class="text-center mt-4" *ngIf="isLoading">
+    <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+  </div>
+  <div class="text-center d-flex justify-content-between">
+    <button type="button" class="btn btn-warning w-50 mt-3 text-white" (click)="closeDialog()">Close</button>
+    <button type="button" class="btn btn-success w-50 ms-3 mt-3" (click)="AddNewCoupon()"
+      [disabled]="formValue.invalid">Add</button>
+  </div>
+</div>

@@ -1,61 +1,27 @@
+# AdminProject
 
-# Crafts
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
-An E-commerce project for people who have a craft to make from home
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Introduction
-Our project is mainly about giving a chance to those people who make handmade products and need a platform to support them and link them with more customers and show their work in the best way possible.
+## Code scaffolding
 
-## Tech Stack
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-**Client:** Angular, Anguler Material,  Bootstrap 
+## Build
 
-**Server:** Node, Express, MongoDB Atlas, Nodemailer, Express Validator,  Joi
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Running unit tests
 
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running end-to-end tests
 
-## Features
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-The application displays a virtual store that contains virtual products.
+## Further help
 
- Users can do the following:
-- Can view [home ,about] without login.
-- Create an account, login or logout.
-- Browse available products added by the admin.
-- Add products to the shopping cart  on login.
-- Delete products from the shopping cart  on login.
-- Display the Wishlist  on login.
-- Add products to the Wishlist  on login.
-- Delete products from the Wishlist on login.
-- Display the shopping cart  on login.
-- The profile contains all the orders a user has made
-- Update profile info.
-- Apply coupon
-- Write a comment for specific product
-
-Admins can do the following:
-
-- Login or logout to the admin panel
-- View all the information stored in the database. They can view/add/edit/delete orders, users, products, coupon and categories. The cart model cannot be modified by an admin because a cart is either modified by the logged in user before the purchase or deleted after the purchase.
-
-
-## Demo
-
-- live demo for user:   [https://lnkd.in/dxXHcuNx](https://lnkd.in/dxXHcuNx)
-- live demo for admin dashboard: [https://lnkd.in/dhTkKG-G](https://lnkd.in/dhTkKG-G)
-
-## Authors
-
-- Heba EL-Said [LinkedIn](https://www.linkedin.com/in/heba-el-said-594600246/)
-- Hellana Asaad  [LinkedIn](https://www.linkedin.com/in/hellana-asaad-78199a217/)
-- Dina Omran[LinkedIn](https://www.linkedin.com/in/dinaomran/)
-- Yasmeen abotalb [LinkedIn](https://www.linkedin.com/in/yasmeen-abotalb-6112181b2/)
-- Hala Sherif [LinkedIn](https://www.linkedin.com/in/hala-sherif-64827a1ba/)
-
-
-
-
-
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

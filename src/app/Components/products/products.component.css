@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+td i {
+  font-size: 22px;
+}
+
+.tableContainer {
+  margin-left: 30px;
+  margin-right: 32px;
+}

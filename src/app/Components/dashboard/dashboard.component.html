@@ -1,0 +1,144 @@
+<div class="container pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="card cards orders">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title icons ms-3"><i class="bi bi-cart-fill"></i></h5>
+            <p class="card-text m-auto">
+              {{totalOrders}}
+              <img src="assets/Spinner-1s-200px(lighter).svg" alt="loading..." width="50" *ngIf="isLoading">
+              <br><br><span>Orders</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="card cards users">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title icons ms-3"><i class="bi bi-people-fill"></i></h5>
+            <p class="card-text m-auto">
+              {{totalUsers}}
+              <img src="assets/Spinner-1s-200px(lighter).svg" alt="loading..." width="50" *ngIf="isLoading">
+              <br><br><span>Users</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="card cards products">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title icons ms-3"><i class="bi bi-box-fill"></i></h5>
+            <p class="card-text m-auto">
+              {{productSold?productSold:''}}
+              <img src="assets/Spinner-1s-200px(lighter).svg" alt="loading..." width="50" *ngIf="isLoading">
+              <br><br><span>Products Sold</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="card cards income">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title icons ms-3"><i class="bi bi-cash"></i></h5>
+            <p class="card-text m-auto">
+              {{totalIncome}}
+              <img src="assets/Spinner-1s-200px(lighter).svg" alt="loading..." width="50" *ngIf="isLoading">
+              <br><br><span>Total Income</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-sm-12 col-md-7 categorySales">
+        <div class="card cards">
+          <!-- <div class="card-body" [chart]="highChart">
+          </div> -->
+          <div class="card-body">
+            <iframe class="barChart w-100"
+              style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+              src="https://charts.mongodb.com/charts-e-commerce_iti-uzzmt/embed/charts?id=6400546a-f83d-41ce-8a51-5fd8765a7fe4&maxDataAge=300&theme=light&autoRefresh=true"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-12 col-md-5 orderStatus">
+        <div class="card cards">
+          <div class="card-body">
+            <iframe class="pieChart w-100"
+              style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+              src="https://charts.mongodb.com/charts-e-commerce_iti-uzzmt/embed/charts?id=63ffa98c-57d8-4ffa-8207-4de59a593776&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6 col-md-12 lastTransactions">
+        <div class="card cards">
+          <div class="card-body">
+            <h4 class="card-title">Last Few Orders</h4>
+            <div class="card-text">
+              <div class="table-responsive">
+                <table class="table w-100" style="height: 222px;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Products Quantity</th>
+                      <th scope="col">User Name</th>
+                      <th scope="col">Date & Time</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Order Status</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let item of lastOrders">
+                    <tr>
+                      <td>{{item.cartItems.length}}</td>
+                      <td width="150">{{item.user.name}}</td>
+                      <td width="200">{{item.createdAt.substring(0,10)}} | {{item.createdAt.substring(11,19)}}</td>
+                      <td>${{item.totalPrice}}</td>
+                      <td [ngClass]="{
+                        accepted: item.status === 'accepted',
+                        pending: item.status === 'pending',
+                        rejected: item.status === 'rejected'
+                      }" class="fw-bold">{{item.status}}</td>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-6 col-md-12 topProducts">
+        <div class="card cards">
+          <div class="card-body">
+            <h4 class="card-title">Top Products</h4>
+            <div class="card-text">
+              <div class="table-responsive">
+                <table class="table w-100">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Rating</th>
+                      <th scope="col">Date & Time</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let item of topProducts">
+                    <tr>
+                      <td>{{item.title}}</td>
+                      <td>{{item.rating}} <i class="bi bi-star-fill"></i></td>
+                      <td>{{item.createdAt.substring(0,10)}} | {{item.createdAt.substring(11,19)}}</td>
+                      <td>${{item.price}}</td>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

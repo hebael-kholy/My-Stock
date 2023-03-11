@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between">
+  <button mat-raised-button color="primary" (click)="addModal()" class="mt-4 ms-5 p-4">+ Add New Category</button>
+  <mat-form-field class="me-5 mt-3" color="primary">
+    <mat-label>Search Table</mat-label>
+    <input matInput placeholder="Search ..." #input type="text" (keyup)="FilterChange($event)">
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8 tableContainer">
+  <table mat-table matSort [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Category Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Creation Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    </ng-container>
+    <ng-container matColumnDef="image" class="m-3">
+      <th mat-header-cell *matHeaderCellDef>
+        <span class="ms-3">Image</span>
+      </th>
+      <td mat-cell *matCellDef=" let element">
+        <img src="{{element.image}}" width="70" height="70" alt="category image">
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="change">
+      <th mat-header-cell *matHeaderCellDef> Change Category </th>
+      <td mat-cell *matCellDef="let element;">
+        <button mat-raised-button color="primary"
+          (click)="editModal(element.name,element.image,element.slug,element._id)">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteCategory(element.name)" class="ms-3">Delete</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr *matNoDataRow>
+      <td class="mat-cell " colspan="4">
+        <span class="m-4">The filter doesn't match any product in the Table for this text {{input.value}}</span>
+      </td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[4,10,20]" showFirstLastButtons
+    class="d-flex align-items-center justify-content-center"></mat-paginator>
+</div>
+<div class="text-center mt-4" *ngIf="isLoading && !isDeleted && !isAdded && !isEdited">
+  <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+</div>

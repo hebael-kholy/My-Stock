@@ -1,0 +1,40 @@
+<mat-sidenav-container *ngIf="authService.isAuthenticated || loginStatus">
+  <mat-sidenav #sidebar mode="side" opened="" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <div class="toolbar w-100">
+        <mat-toolbar class="bg-light">
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidebar.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div class="box ms-auto">
+            <button mat-button [matMenuTriggerFor]="menu">
+              <img src="{{image}}" alt="user" width="50" height="50" class="p-2" *ngIf="isLoading == 'false'">
+              <img src="assets/Spinner-1s-200px.svg" alt="user" width="50" height="50" class="p-2"
+                *ngIf="isLoading == 'true'">
+              <span class="text-capitalize">{{username}}</span>
+              <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="logOut()">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </div>
+        </mat-toolbar>
+      </div>
+      <div class="main">
+        <!-- <div class="text-capitalize p-2 text-center">
+          Welcome Admin
+        </div> -->
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

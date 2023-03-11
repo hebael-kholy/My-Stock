@@ -1,0 +1,42 @@
+<div class="container-fluid vh-100 pt-5">
+  <div class="row">
+    <div class="col">
+      <mat-card>
+        <mat-card-content>
+          <div class="header">
+            <h2>ADMIN LOGIN</h2>
+          </div>
+          <div class="text-center overlay" *ngIf="isLoading">
+            <img src="assets/Spinner-1s-200px.svg" alt="">
+          </div>
+          <form #signInForm="ngForm" (ngSubmit)="onSubmit(userEmail.value,userPassword.value)">
+            <div class="email-input">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput required name="email" #userEmail>
+                <mat-error *ngIf="loginForm.get('email').errors?.required">
+                  Required Email Address
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <a href="" class="aLink mb-2">Forgot Password?</a>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [type]="hide? 'password':'text'" required name="password" #userPassword>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide? 'visibility_off': 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('password').errors?.required">Required Password</mat-error>
+              </mat-form-field>
+            </div>
+            <button class="btn btn-primary border-0 full-width mt-3 mb-3" type="submit"
+              [disabled]="signInForm.invalid">Login</button>
+            <div *ngIf="errmsg" class="alert alert-danger full-width m-auto">{{errmsg}}</div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

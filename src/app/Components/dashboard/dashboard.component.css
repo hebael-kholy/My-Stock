@@ -1,0 +1,127 @@
+.users,
+.orders,
+.income,
+.products {
+  color: white;
+  height: 150px;
+}
+.orders {
+  background-color: #003d42;
+}
+.users {
+  background-color: #f89d19;
+}
+.products {
+  background-color: #881002;
+}
+.income {
+  background-color: #6d34ff;
+}
+.card-title i {
+  font-size: 45px;
+}
+.card-text {
+  font-size: 15px;
+}
+
+.cards {
+  margin: 0 auto;
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+  border-radius: 10px;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  padding: 1.5%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.cards:hover {
+  box-shadow: 3px 8px 8px 8px rgba(0, 0, 0, 0.16),
+    0 4px 10px rgba(0, 0, 0, 0.23);
+}
+/* .monthSales,
+.categorySales,
+.lastTransactions,
+.top3Products {
+  width: fit-content;
+} */
+.monthSales div,
+.categorySales div,
+.lastTransactions div,
+.top3Products div {
+  height: fit-content;
+}
+.accepted {
+  color: green;
+}
+.pending {
+  color: #f89d19;
+}
+.rejected {
+  color: #881002;
+}
+.barChart {
+  height: 320px;
+}
+.pieChart {
+  height: 330px;
+}
+
+/* =============================== */
+/* @media only screen and (min-width: 600px) {
+  .barChart {
+    width: 300px;
+    height: 320px;
+  }
+  .pieChart {
+    width: 100px;
+    height: 330px;
+  }
+} */
+/* @media only screen and (min-width: 1200px) {
+  .barChart {
+    width: 750px;
+    height: 320px;
+  }
+  .pieChart {
+    width: 350px;
+    height: 330px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .barChart {
+    width: 600px;
+    height: 320px;
+  }
+  .pieChart {
+    width: 300px;
+    height: 330px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .barChart {
+    width: 400px;
+    height: 320px;
+  }
+  .pieChart {
+    width: 200px;
+    height: 330px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .barChart {
+    width: 200px;
+    height: 320px;
+  }
+  .pieChart {
+    width: 100px;
+    height: 330px;
+  }
+} */

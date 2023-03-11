@@ -1,0 +1,49 @@
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+label{
+  font-weight: 400;
+  font-size: 18px;
+}
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid black;
+}
+select:focus {
+  box-shadow: none;
+}
+form{
+  padding: 15px;
+}
+.con{
+  padding: 20px;
+}
+textarea{
+  max-width: 100% !important;
+  min-width: 100% !important;
+  max-height: 120px !important;
+  min-height: 120px !important;
+}
+img{
+  width: 100%;
+  max-height: 120px;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
