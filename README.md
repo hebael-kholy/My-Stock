@@ -52,7 +52,7 @@ Admins can do the following:
 
 - Heba EL-Said [LinkedIn](https://www.linkedin.com/in/heba-el-said-594600246/)
 - Hellana Asaad  [LinkedIn](https://www.linkedin.com/in/hellana-asaad-78199a217/)
-- Dina Omran[LinkedIn](https://www.linkedin.com/in/dinaomran/)
+- Dina Omran  [LinkedIn](https://www.linkedin.com/in/dinaomran/)
 - Yasmeen abotalb [LinkedIn](https://www.linkedin.com/in/yasmeen-abotalb-6112181b2/)
 - Hala Sherif [LinkedIn](https://www.linkedin.com/in/hala-sherif-64827a1ba/)
 
