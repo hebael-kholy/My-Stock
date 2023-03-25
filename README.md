@@ -56,7 +56,9 @@ Admins can do the following:
 - Yasmeen abotalb [LinkedIn](https://www.linkedin.com/in/yasmeen-abotalb-6112181b2/)
 - Hala Sherif [LinkedIn](https://www.linkedin.com/in/hala-sherif-64827a1ba/)
 
+## Feedback
 
+If you have any feedback, please reach out to us at hebaelsaidali@gmail.com
 
 
 
