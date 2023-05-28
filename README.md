@@ -1,12 +1,12 @@
 
-# <img src="https://user-images.githubusercontent.com/71638009/227718538-49266762-055c-4560-94b2-fb1c72a41a55.png" width = "50" >  Crafts
+# My Stock
 
 
-An E-commerce project for people who have a craft to make from home
+•	An E-commerce project for people who want to buy Stock Products
 
 
 ## Introduction
-Our project is mainly about giving a chance to those people who make handmade products and need a platform to support them and link them with more customers and show their work in the best way possible.
+Our project is mainly about marketing and branding Some Stock Products to help people get what they need with a good Quality and By less prices.
 
 ## Tech Stack
 
