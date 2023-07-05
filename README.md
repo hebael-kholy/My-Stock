@@ -42,12 +42,6 @@ Admins can do the following:
 - View all the information stored in the database. They can view/add/edit/delete orders, users, products, coupon and categories. The cart model cannot be modified by an admin because a cart is either modified by the logged in user before the purchase or deleted after the purchase.
 
 
-## Demo
-
-- live demo for user:   [https://lnkd.in/dxXHcuNx](https://lnkd.in/dxXHcuNx)
-- live demo for admin dashboard: [https://lnkd.in/dhTkKG-G](https://lnkd.in/dhTkKG-G)
-- to see video: [video](https://www.linkedin.com/posts/heba-el-said-594600246_angular-nodejs-iti-activity-7037485655827836928-n46b?utm_source=share&utm_medium=member_desktop)
-
 ## Authors
 
 - Heba EL-Said [LinkedIn](https://www.linkedin.com/in/heba-el-said-594600246/)
